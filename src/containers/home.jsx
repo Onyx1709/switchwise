@@ -64,7 +64,7 @@ function Home() {
 					<p className="my-2 text-center text-secondary-500 text-sm md:my-4 md:text-left lg:font-medium lg:leading-8 lg:text-base">
 						Introducing our innovate smart switcing app that puts you in control
 						of your home like never before. Say hello to simplicity and
-						effective switching services
+						effective switching services.
 					</p>
 					<div className="flex justify-center my-3 md:justify-start">
 						<Link className="hidden md:inline" to={routes.REGISTER_PAGE}>
