@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import pageRoutes from '../config/routes';
+import pageRoutes from './config/routes';
 
 // Error Page
 import Error from './pages/error';
