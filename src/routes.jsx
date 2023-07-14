@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, ScrollRestoration } from 'react-router-dom';
 
 import pageRoutes from './config/routes';
 
@@ -32,6 +32,12 @@ const routes = [
 // Added errorElement for all pages
 const erroredRoutes = routes.map((route) => ({
 	...route,
+	element: (
+		<>
+			{route.element}
+			<ScrollRestoration />
+		</>
+	),
 	errorElement: <Error />,
 }));
 
