@@ -1,15 +1,7 @@
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import Register from '../../containers/account/register';
 
 function Page() {
-	return (
-		<div>
-			<h1>Register Page</h1>
-			<Link to="/account/login">
-				<Button type="primary">Login</Button>
-			</Link>
-		</div>
-	);
+	return <Register />;
 }
 
 export default Page;
