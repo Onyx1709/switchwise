@@ -23,5 +23,24 @@ dist-ssr
 *.sln
 *.sw?
 
+# local env files
+.env
+.env*
+.env*.local
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# firebase
+firebase-debug.log*
+firebase-debug.*.log*
+ui-debug.log*
+/firebase_storage/
+firebase-export*
+
+
 # custom
 design

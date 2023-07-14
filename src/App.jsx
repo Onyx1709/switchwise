@@ -1,7 +1,24 @@
+import { ConfigProvider } from 'antd';
+import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
+
+import router from './routes';
+import store from './store';
+
 function App() {
-  return (
-    <h1 className="text-center text-lg text-red-600">Hello World</h1>
-  )
+	return (
+		<Provider store={store}>
+			<ConfigProvider
+				theme={{
+					token: {
+						colorBgPrimary: '1A1A1A',
+					},
+				}}
+			>
+				<RouterProvider router={router} />
+			</ConfigProvider>
+		</Provider>
+	);
 }
 
 export default App;
