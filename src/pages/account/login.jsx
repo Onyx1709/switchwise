@@ -1,15 +1,7 @@
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import Login from '../../containers/account/login';
 
 function Page() {
-	return (
-		<div>
-			<h1 className="text-center text-blue-500">Login Page</h1>
-			<Link to="/">
-				<Button type="primary">Go to HOME Page</Button>
-			</Link>
-		</div>
-	);
+	return <Login />;
 }
 
 export default Page;
