@@ -7,6 +7,7 @@ import Error from './pages/error';
 import NotFound from './pages/not-found';
 
 import Home from './pages';
+import Authentication from './pages/account/authentication';
 import Login from './pages/account/login';
 import Register from './pages/account/register';
 
@@ -14,6 +15,10 @@ const routes = [
 	{
 		path: pageRoutes.HOME_PAGE,
 		element: <Home />,
+	},
+	{
+		path: pageRoutes.AUTHENTICATION_PAGE,
+		element: <Authentication />,
 	},
 	{
 		path: pageRoutes.LOGIN_PAGE,
