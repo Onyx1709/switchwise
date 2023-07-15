@@ -28,7 +28,7 @@ const routes = [
 		element: <Home />,
 	},
 	{
-		// path: pageRoutes.AUTH_BASE_PAGE,
+		path: pageRoutes.AUTH_BASE_PAGE,
 		element: <AuthLayout />,
 		children: [
 			{
