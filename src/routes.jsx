@@ -6,11 +6,18 @@ import pageRoutes from './config/routes';
 import Error from './pages/error';
 import NotFound from './pages/not-found';
 
+// Layout
+import DashboardLayout from './layout/dashboard';
+
+// Auth
 import Home from './pages';
 import Authentication from './pages/account/authentication';
 import ForgotPassword from './pages/account/forgot-password';
 import Login from './pages/account/login';
 import Register from './pages/account/register';
+
+// Dashboard
+import Dashboard from './pages/dashboard';
 
 const routes = [
 	{
@@ -32,6 +39,17 @@ const routes = [
 	{
 		path: pageRoutes.REGISTER_PAGE,
 		element: <Register />,
+	},
+	{
+		path: pageRoutes.DASHBOARD_PAGE,
+		element: <DashboardLayout />,
+		children: [
+			{
+				index: true,
+				path: pageRoutes.DASHBOARD_PAGE,
+				element: <Dashboard />,
+			},
+		],
 	},
 	{
 		path: '*',
