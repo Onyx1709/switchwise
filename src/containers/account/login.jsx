@@ -70,7 +70,7 @@ function Login() {
 					<div className="text-right">
 						<Link to={routes.FORGOT_PASSWORD_PAGE}>
 							<Button htmlType="button" type="link">
-								<span className="text-primary-500">Forgotten Password?</span>
+								<span className="text-primary-500">Forgot Password?</span>
 							</Button>
 						</Link>
 					</div>
