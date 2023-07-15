@@ -28,7 +28,7 @@ function Layout() {
 				{/* Logo */}
 
 				<span
-					className="cursor-pointer text-color-primary text-lg"
+					className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105"
 					ref={menu.buttonRef}
 					onClick={() => menu.setVisible(true)}
 				>
@@ -42,7 +42,7 @@ function Layout() {
 					ref={menu.ref}
 				/>
 
-				<div className="h-full min-h-screen w-full lg:ml-auto lg:w-5/6">
+				<div className="h-full min-h-screen w-full lg:ml-auto lg:w-4/5">
 					<Outlet />
 				</div>
 			</div>
