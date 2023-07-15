@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import routes from '../config/routes';
 
 const sidebarStyle =
-	'bg-white duration-1000 h-full ml-auto overflow-y-auto relative shadow-lg transform w-3/5 md:px-2 md:w-1/3 lg:px-0 lg:py-6 lg:translate-x-0 lg:w-full xl:py-7';
+	'bg-white duration-1000 h-full ml-auto overflow-y-auto relative shadow-lg transform w-3/5 md:px-2 md:w-1/3 lg:bg-gray-100 lg:px-0 lg:py-4 lg:translate-x-0 lg:w-full';
 
 const activeLinkClasses = 'bg-primary-500 text-gray-100 tracking-widest';
 const inactiveLinkClasses =
@@ -137,7 +137,7 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 		<nav
 			className={`${
 				visible ? 'opacity-100 z-100' : 'opacity-0 z-[-100]'
-			} duration-500 fixed h-full left-0 top-0 overflow-x-hidden w-full lg:bg-gray-100 lg:opacity-100 lg:shadow-lg lg:w-1/5 lg:z-0`}
+			} duration-500 fixed h-full left-0 top-0 overflow-x-hidden w-full lg:opacity-100 lg:shadow-lg lg:w-1/5 lg:z-0`}
 			ref={ref}
 			style={{
 				backgroundColor: 'rgba(0, 0, 0, 0.2)',
