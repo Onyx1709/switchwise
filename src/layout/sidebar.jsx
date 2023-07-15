@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 import routes from '../config/routes';
 
@@ -24,20 +24,16 @@ const inactiveLinkClasses =
 
 const DefaultIcon = () => <></>;
 
-// eslint-disable-next-line react/prop-types
-function SimpleLink({
-	href = '#',
-	icon: Icon = DefaultIcon,
-	isActive,
-	onClick,
-	title,
-}) {
+function SimpleLink({ href = '#', icon: Icon = DefaultIcon, onClick, title }) {
+	const value = useMatch(href);
+	const isActive = React.useMemo(() => value !== null, [value]);
+
 	return (
 		<Link
 			className={`${
-				isActive === 0 ? activeLinkClasses : inactiveLinkClasses
+				isActive ? activeLinkClasses : inactiveLinkClasses
 			} cursor-pointer flex font-semibold items-center no-underline p-4 rounded-sm text-sm`}
-			href={href}
+			to={href}
 			onClick={onClick}
 		>
 			<span className="mr-2">
@@ -48,7 +44,6 @@ function SimpleLink({
 	);
 }
 
-// eslint-disable-next-line react/prop-types
 function ListLink({ icon: Icon, onClick, links, title }) {
 	const [visible, setVisible] = React.useState(false);
 
@@ -81,7 +76,6 @@ function ListLink({ icon: Icon, onClick, links, title }) {
 					visible ? 'block opacity-100 visible' : 'hidden invisible opacity-0'
 				} duration-500 px-3 transform transition-all`}
 			>
-				{/* eslint-disable-next-line react/prop-types */}
 				{links.map(({ href, title }, index) => {
 					const activeLinkClasses =
 						'bg-primary-50 text-primary-500 tracking-widest';
@@ -93,7 +87,7 @@ function ListLink({ icon: Icon, onClick, links, title }) {
 							className={`${
 								isActive === 0 ? activeLinkClasses : inactiveLinkClasses
 							} cursor-pointer flex font-semibold items-center no-underline px-6 py-3 rounded-sm text-sm`}
-							href={href}
+							to={href}
 							onClick={onClick}
 						>
 							<span className="">{title}</span>
@@ -119,8 +113,20 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 				title: 'Rooms',
 				links: [
 					{
-						title: 'ROOM 1',
-						href: routes.SETTINGS_PAGE,
+						title: 'Living Room',
+						href: routes.ROOM_PAGE('living-room'),
+					},
+					{
+						title: 'Bedroom 1',
+						href: routes.ROOM_PAGE('bedroom-1'),
+					},
+					{
+						title: 'Bedroom 2',
+						href: routes.ROOM_PAGE('bedroom-2'),
+					},
+					{
+						title: 'Others',
+						href: routes.ROOM_PAGE('others'),
 					},
 				],
 			},
@@ -170,7 +176,6 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 				</div>
 				<div className="mt-3">
 					{links.map((props, index) => {
-						// eslint-disable-next-line react/prop-types
 						return props.links ? (
 							<ListLink key={index} {...props} />
 						) : (

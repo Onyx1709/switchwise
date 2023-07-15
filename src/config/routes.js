@@ -8,6 +8,8 @@ export const REGISTER_PAGE = '/account/register';
 
 // Dashboard
 export const DASHBOARD_PAGE = '/dashboard/';
+export const ROOM_PAGE = (id) => '/dashboard/rooms/' + id + '/';
+export const SETTINGS_PAGE = '/dashboard/settings/';
 
 const routes = {
 	// Auth
@@ -19,6 +21,8 @@ const routes = {
 
 	// Dashboard
 	DASHBOARD_PAGE,
+	SETTINGS_PAGE,
+	ROOM_PAGE,
 };
 
 export default routes;

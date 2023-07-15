@@ -18,6 +18,8 @@ import Register from './pages/account/register';
 
 // Dashboard
 import Dashboard from './pages/dashboard';
+import RoomDetail from './pages/dashboard/rooms/detail';
+import Settings from './pages/dashboard/settings';
 
 const routes = [
 	{
@@ -48,6 +50,14 @@ const routes = [
 				index: true,
 				path: pageRoutes.DASHBOARD_PAGE,
 				element: <Dashboard />,
+			},
+			{
+				path: pageRoutes.ROOM_PAGE(':id'),
+				element: <RoomDetail />,
+			},
+			{
+				path: pageRoutes.SETTINGS_PAGE,
+				element: <Settings />,
 			},
 		],
 	},
