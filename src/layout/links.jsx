@@ -63,11 +63,11 @@ export function ListLink({ icon: Icon, onClick, links, title }) {
 		const _pathname =
 			pathname !== '/' && !pathname.endsWith('/') ? pathname + '/' : pathname;
 
-		const active1 = links.filter(({ href }) => href === _pathname)[0];
-		const active2 = links.filter(
+		const active1 = links.find(({ href }) => href === _pathname);
+		const active2 = links.find(
 			({ href }) =>
 				href && href !== '/' && _pathname !== '/' && _pathname.startsWith(href)
-		)[0];
+		);
 
 		return active1 || active2 ? true : false;
 	}, [links, pathname]);

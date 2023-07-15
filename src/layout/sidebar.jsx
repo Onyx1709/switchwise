@@ -58,7 +58,7 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 	return (
 		<nav
 			className={`${
-				visible ? 'opacity-100 z-100' : 'opacity-0 z-[-100]'
+				visible ? 'opacity-100 z-[1000]' : 'opacity-0 z-[-100]'
 			} duration-500 fixed h-full left-0 top-0 overflow-x-hidden w-full lg:opacity-100 lg:shadow-lg lg:w-1/5 lg:z-0`}
 			ref={ref}
 			style={{
