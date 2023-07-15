@@ -2,19 +2,21 @@
 import {
 	CaretDownOutlined,
 	CaretRightOutlined,
-	LeftSquareOutlined,
 	CloseOutlined,
+	LeftSquareOutlined,
+	LogoutOutlined,
 	HomeOutlined,
 	SettingOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
+import { Button } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import routes from '../config/routes';
 
 const sidebarStyle =
-	'bg-white duration-1000 h-full ml-auto overflow-y-auto shadow-lg transform w-3/5 md:px-2 md:w-1/3 lg:px-0 lg:py-6 lg:translate-x-0 lg:w-full xl:py-7';
+	'bg-white duration-1000 h-full ml-auto overflow-y-auto relative shadow-lg transform w-3/5 md:px-2 md:w-1/3 lg:px-0 lg:py-6 lg:translate-x-0 lg:w-full xl:py-7';
 
 const activeLinkClasses = 'bg-primary-500 text-gray-100 tracking-widest';
 const inactiveLinkClasses =
@@ -146,7 +148,7 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 					visible ? 'translate-x-0' : 'translate-x-full'
 				} ${sidebarStyle}`}
 			>
-				<div className="flex items-center justify-between px-4 py-5">
+				<div className="flex items-center justify-between px-4 py-5 lg:hidden">
 					<span
 						className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105"
 						onClick={() => setVisible(false)}
@@ -157,6 +159,15 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 						<UserOutlined />
 					</span>
 				</div>
+				<div className="hidden p-4 pt-0 md:block">
+					<div className="h-[24px] w-[150px]">
+						<img
+							className="hidden h-full w-full md:block"
+							src="/images/desktop-login-switchwise.png"
+							alt="SwitchWise"
+						/>
+					</div>
+				</div>
 				<div className="mt-3">
 					{links.map((props, index) => {
 						// eslint-disable-next-line react/prop-types
@@ -166,6 +177,16 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 							<SimpleLink key={index} {...props} />
 						);
 					})}
+				</div>
+				<div className="absolute bottom-10 px-4 w-full">
+					<Button block type="ghost">
+						<p className="flex items-center text-red-500 text-sm">
+							<span className="mr-2">
+								<LogoutOutlined />
+							</span>
+							Logout
+						</p>
+					</Button>
 				</div>
 			</div>
 		</nav>
