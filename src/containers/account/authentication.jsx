@@ -1,6 +1,8 @@
 import { Button, Input } from 'antd';
 import React from 'react';
 
+import Layout from '../../layout/auth';
+
 function Authentication() {
 	const ref1 = React.useRef(null);
 	const ref2 = React.useRef(null);
@@ -55,93 +57,73 @@ function Authentication() {
 	);
 
 	return (
-		<div className="max-w-[400px] mx-auto p-6">
-			{/* Logo */}
-			<div className="h-[21px] mx-auto w-[120px] md:h-[32px] md:w-[181px]">
-				<img
-					className="h-full w-full md:hidden"
-					src="/images/mobile-login-switchwise.png"
-					alt="SwitchWise"
-				/>
-				<img
-					className="hidden h-full w-full md:block"
-					src="/images/desktop-login-switchwise.png"
-					alt="SwitchWise"
-				/>
-			</div>
-			{/* Logo */}
-
-			<div className="bg-gray-50 my-4 rounded-lg p-6 shadow-lg">
-				<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
-					Authentication
-				</h2>
-				<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
-					Enter the authentcation code provided to you by the admin
-				</p>
-				<form className="py-4">
-					<div className="flex items-center justify-between">
-						<div className="px-3">
-							<Input
-								className="border-secondary-500 font-medium py-2 text-center text-2xl"
-								placeholder="-"
-								onChange={({ target: { value } }) => {
-									handleChange(1, value);
-								}}
-								maxLength={1}
-								ref={ref1}
-							/>
-						</div>
-						<div className="px-3">
-							<Input
-								className="border-secondary-500 font-medium py-2 text-center text-2xl"
-								placeholder="-"
-								onChange={({ target: { value } }) => {
-									handleChange(2, value);
-								}}
-								maxLength={1}
-								ref={ref2}
-							/>
-						</div>
-						<div className="px-3">
-							<Input
-								className="border-secondary-500 font-medium py-2 text-center text-2xl"
-								placeholder="-"
-								onChange={({ target: { value } }) => {
-									handleChange(3, value);
-								}}
-								maxLength={1}
-								ref={ref3}
-							/>
-						</div>
-						<div className="px-3">
-							<Input
-								className="border-secondary-500 font-medium py-2 text-center text-2xl"
-								placeholder="-"
-								onChange={({ target: { value } }) => {
-									handleChange(4, value);
-								}}
-								onKeyDown={(e) => {
-									console.log(e);
-								}}
-								maxLength={1}
-								ref={ref4}
-							/>
-						</div>
+		<Layout title="Authentication">
+			<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
+				Enter the authentcation code provided to you by the admin
+			</p>
+			<form className="py-4">
+				<div className="flex items-center justify-between">
+					<div className="px-3">
+						<Input
+							className="border-secondary-500 font-medium py-2 text-center text-2xl"
+							placeholder="-"
+							onChange={({ target: { value } }) => {
+								handleChange(1, value);
+							}}
+							maxLength={1}
+							ref={ref1}
+						/>
 					</div>
-					<div className="my-3 py-2">
-						<Button
-							block
-							htmlType="submit"
-							size="large"
-							shape="round"
-							type="primary"
-						>
-							<span className="px-4 text-sm">Authenticate</span>
-						</Button>
+					<div className="px-3">
+						<Input
+							className="border-secondary-500 font-medium py-2 text-center text-2xl"
+							placeholder="-"
+							onChange={({ target: { value } }) => {
+								handleChange(2, value);
+							}}
+							maxLength={1}
+							ref={ref2}
+						/>
 					</div>
-				</form>
-			</div>
-		</div>
+					<div className="px-3">
+						<Input
+							className="border-secondary-500 font-medium py-2 text-center text-2xl"
+							placeholder="-"
+							onChange={({ target: { value } }) => {
+								handleChange(3, value);
+							}}
+							maxLength={1}
+							ref={ref3}
+						/>
+					</div>
+					<div className="px-3">
+						<Input
+							className="border-secondary-500 font-medium py-2 text-center text-2xl"
+							placeholder="-"
+							onChange={({ target: { value } }) => {
+								handleChange(4, value);
+							}}
+							onKeyDown={(e) => {
+								console.log(e);
+							}}
+							maxLength={1}
+							ref={ref4}
+						/>
+					</div>
+				</div>
+				<div className="my-3 py-2">
+					<Button
+						block
+						htmlType="submit"
+						size="large"
+						shape="round"
+						type="primary"
+					>
+						<span className="px-4 text-sm">Authenticate</span>
+					</Button>
+				</div>
+			</form>
+		</Layout>
 	);
 }
 
