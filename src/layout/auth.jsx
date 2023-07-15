@@ -1,5 +1,6 @@
-// eslint-disable-next-line react/prop-types
-function Layout({ children, title }) {
+import { Outlet } from 'react-router-dom';
+
+function Layout() {
 	return (
 		<div className="max-w-[400px] mx-auto p-6">
 			{/* Logo */}
@@ -18,10 +19,7 @@ function Layout({ children, title }) {
 			{/* Logo */}
 
 			<div className="bg-gray-50 my-4 rounded-lg p-6 shadow-lg">
-				<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
-					{title}
-				</h2>
-				{children}
+				<Outlet />
 			</div>
 		</div>
 	);

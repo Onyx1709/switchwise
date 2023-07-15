@@ -1,10 +1,11 @@
 import { Button, Input } from 'antd';
 
-import Layout from '../../layout/auth';
-
 function ForgotPassword() {
 	return (
-		<Layout title="Forgot Password">
+		<>
+			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
+				Forget Password
+			</h2>
 			<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
 				Enter your registered email address to receive your password reset
 				instructions.
@@ -41,7 +42,7 @@ function ForgotPassword() {
 					</Button>
 				</div>
 			</form>
-		</Layout>
+		</>
 	);
 }
 

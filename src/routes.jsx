@@ -7,6 +7,7 @@ import Error from './pages/error';
 import NotFound from './pages/not-found';
 
 // Layout
+import AuthLayout from './layout/auth';
 import DashboardLayout from './layout/dashboard';
 
 // Auth
@@ -27,20 +28,26 @@ const routes = [
 		element: <Home />,
 	},
 	{
-		path: pageRoutes.AUTHENTICATION_PAGE,
-		element: <Authentication />,
-	},
-	{
-		path: pageRoutes.FORGOT_PASSWORD_PAGE,
-		element: <ForgotPassword />,
-	},
-	{
-		path: pageRoutes.LOGIN_PAGE,
-		element: <Login />,
-	},
-	{
-		path: pageRoutes.REGISTER_PAGE,
-		element: <Register />,
+		// path: pageRoutes.AUTH_BASE_PAGE,
+		element: <AuthLayout />,
+		children: [
+			{
+				path: pageRoutes.AUTHENTICATION_PAGE,
+				element: <Authentication />,
+			},
+			{
+				path: pageRoutes.FORGOT_PASSWORD_PAGE,
+				element: <ForgotPassword />,
+			},
+			{
+				path: pageRoutes.LOGIN_PAGE,
+				element: <Login />,
+			},
+			{
+				path: pageRoutes.REGISTER_PAGE,
+				element: <Register />,
+			},
+		],
 	},
 	{
 		path: pageRoutes.DASHBOARD_PAGE,

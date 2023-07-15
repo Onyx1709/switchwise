@@ -1,10 +1,11 @@
 export const HOME_PAGE = '/';
 
 // Auth
-export const AUTHENTICATION_PAGE = '/account/authentication/';
-export const FORGOT_PASSWORD_PAGE = '/account/forgot-password/';
-export const LOGIN_PAGE = '/account/login';
-export const REGISTER_PAGE = '/account/register';
+export const AUTH_BASE_PAGE = '/account/';
+export const AUTHENTICATION_PAGE = AUTH_BASE_PAGE + '/authentication/';
+export const FORGOT_PASSWORD_PAGE = AUTH_BASE_PAGE + '/forgot-password/';
+export const LOGIN_PAGE = AUTH_BASE_PAGE + '/login';
+export const REGISTER_PAGE = AUTH_BASE_PAGE + '/register';
 
 // Dashboard
 export const DASHBOARD_PAGE = '/dashboard/';
@@ -13,6 +14,7 @@ export const SETTINGS_PAGE = '/dashboard/settings/';
 
 const routes = {
 	// Auth
+	AUTH_BASE_PAGE,
 	AUTHENTICATION_PAGE,
 	FORGOT_PASSWORD_PAGE,
 	HOME_PAGE,

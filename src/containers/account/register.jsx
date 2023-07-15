@@ -3,11 +3,13 @@ import { Button, Checkbox, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import routes from '../../config/routes';
-import Layout from '../../layout/auth';
 
 function Register() {
 	return (
-		<Layout title="Sign Up">
+		<>
+			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
+				Sign Up
+			</h2>
 			<form>
 				<div className="my-5">
 					<label
@@ -118,7 +120,7 @@ function Register() {
 					<Button type="link">Log In</Button>
 				</Link>
 			</p>
-		</Layout>
+		</>
 	);
 }
 

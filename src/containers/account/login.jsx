@@ -3,11 +3,13 @@ import { Button, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import routes from '../../config/routes';
-import Layout from '../../layout/auth';
 
 function Login() {
 	return (
-		<Layout title="Log In">
+		<>
+			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
+				Log In
+			</h2>
 			<form>
 				<div className="my-5">
 					<label
@@ -94,7 +96,7 @@ function Login() {
 					<Button type="link">Sign Up</Button>
 				</Link>
 			</p>
-		</Layout>
+		</>
 	);
 }
 

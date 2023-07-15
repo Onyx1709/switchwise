@@ -1,8 +1,6 @@
 import { Button, Input } from 'antd';
 import React from 'react';
 
-import Layout from '../../layout/auth';
-
 function Authentication() {
 	const ref1 = React.useRef(null);
 	const ref2 = React.useRef(null);
@@ -57,7 +55,10 @@ function Authentication() {
 	);
 
 	return (
-		<Layout title="Authentication">
+		<>
+			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
+				Authentication
+			</h2>
 			<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
 				Enter the authentcation code provided to you by the admin
 			</p>
@@ -123,7 +124,7 @@ function Authentication() {
 					</Button>
 				</div>
 			</form>
-		</Layout>
+		</>
 	);
 }
 
