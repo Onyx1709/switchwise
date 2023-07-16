@@ -1,7 +1,12 @@
-import { BarsOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
-import { Outlet } from 'react-router-dom';
+import {
+	BarsOutlined,
+	BellOutlined,
+	ArrowRightOutlined,
+} from '@ant-design/icons';
+import { Link, Outlet } from 'react-router-dom';
 
 import Sidebar from './sidebar';
+import pageRoutes from '../config/routes';
 import useOutsideClick from '../hooks/useOutsideClick';
 
 function Layout() {
@@ -53,9 +58,12 @@ function Layout() {
 							<span className="cursor-pointer duration-500 font-semibold mx-4 text-secondary-500 text-lg transform hover:scale-105">
 								<BellOutlined />
 							</span>
-							<span className="cursor-pointer duration-500 font-semibold ml-4 text-secondary-500 text-lg transform hover:scale-105">
-								<UserOutlined />
-							</span>
+							<Link
+								to={pageRoutes.HOME_PAGE}
+								className="cursor-pointer duration-500 font-semibold ml-4 text-secondary-500 text-lg transform hover:scale-105"
+							>
+								<ArrowRightOutlined />
+							</Link>
 						</div>
 					</div>
 					<Outlet />
