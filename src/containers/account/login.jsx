@@ -93,7 +93,9 @@ function Login() {
 			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
 				New to SwitchWise?{' '}
 				<Link to={routes.REGISTER_PAGE}>
-					<Button type="link">Sign Up</Button>
+					<Button type="link">
+						<span>Sign Up</span>
+					</Button>
 				</Link>
 			</p>
 		</>

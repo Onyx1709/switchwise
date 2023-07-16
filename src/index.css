@@ -20,7 +20,13 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+span,
+a,
+button,
+button span {
+	font-family: 'Montserrat', Verdana, Inter, system-ui, Avenir, Helvetica, Arial,
+		sans-serif;
 	margin: 0;
 	padding: 0;
 }

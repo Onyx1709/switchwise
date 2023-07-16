@@ -117,7 +117,9 @@ function Register() {
 			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
 				Already have an account?{' '}
 				<Link to={routes.LOGIN_PAGE}>
-					<Button type="link">Log In</Button>
+					<Button type="link">
+						<span>Log In</span>
+					</Button>
 				</Link>
 			</p>
 		</>
