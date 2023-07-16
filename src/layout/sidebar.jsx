@@ -97,23 +97,25 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 					</div>
 				</div>
 				<div className="mt-3">
-					{links.map((props, index) => {
-						return props.links ? (
-							<ListLink key={index} {...props} />
-						) : (
-							<SimpleLink key={index} {...props} />
-						);
-					})}
-				</div>
-				<div className="absolute bottom-10 px-4 w-full">
-					<Button block type="ghost">
-						<p className="flex items-center text-red-500 text-sm">
-							<span className="mr-2">
-								<LogoutOutlined />
-							</span>
-							Logout
-						</p>
-					</Button>
+					<div>
+						{links.map((props, index) => {
+							return props.links ? (
+								<ListLink key={index} {...props} />
+							) : (
+								<SimpleLink key={index} {...props} />
+							);
+						})}
+					</div>
+					<div className="sidebar-logout w-full">
+						<Button block size="large" type="ghost">
+							<p className="flex items-center text-red-500 text-sm">
+								<span className="mr-2">
+									<LogoutOutlined />
+								</span>
+								Logout
+							</p>
+						</Button>
+					</div>
 				</div>
 			</div>
 		</nav>

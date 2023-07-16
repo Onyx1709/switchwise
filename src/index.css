@@ -36,3 +36,9 @@ p {
 .ant-switch-checked.active-device .ant-switch-handle::before {
 	@apply bg-primary-500;
 }
+
+@media (min-height: 500px) {
+	.sidebar-logout {
+		@apply absolute bottom-10;
+	}
+}
