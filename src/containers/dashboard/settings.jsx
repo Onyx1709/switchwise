@@ -17,7 +17,7 @@ const items = [
 
 function Settings() {
 	return (
-		<div className="lg:px-6">
+		<div>
 			<h3 className="font-semibold my-3 text-center text-secondary-500 text-base md:text-lg lg:text-left">
 				Settings
 			</h3>

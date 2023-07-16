@@ -1,4 +1,4 @@
-import { BarsOutlined } from '@ant-design/icons';
+import { BarsOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
 
 import Sidebar from './sidebar';
@@ -44,7 +44,20 @@ function Layout() {
 					ref={menu.ref}
 				/>
 
-				<div className="h-full min-h-screen p-4 w-full sm:max-w-[580px] sm:mx-auto md:max-w-[768px] md:px-6 md:py-3 lg:max-w-none lg:ml-auto lg:mr-0 lg:w-4/5">
+				<div className="h-full min-h-screen p-4 w-full sm:max-w-[580px] sm:mx-auto md:max-w-[768px] md:px-6 md:py-3 lg:max-w-none lg:ml-auto lg:mr-0 lg:px-12 lg:w-4/5">
+					<div className="hidden items-center justify-between my-3 lg:flex">
+						<h3 className="font-semibold text-base text-secondary-500">
+							Welcome, TheJohnDoe
+						</h3>
+						<div className="flex items center">
+							<span className="cursor-pointer duration-500 font-semibold mx-4 text-secondary-500 text-lg transform hover:scale-105">
+								<BellOutlined />
+							</span>
+							<span className="cursor-pointer duration-500 font-semibold ml-4 text-secondary-500 text-lg transform hover:scale-105">
+								<UserOutlined />
+							</span>
+						</div>
+					</div>
 					<Outlet />
 				</div>
 			</div>
