@@ -1,1 +1,1 @@
-export const NODE_ENV = import.meta.env.NODE_ENV;
+export const NODE_ENV = import.meta.env.DEV ? 'development' : 'production';
