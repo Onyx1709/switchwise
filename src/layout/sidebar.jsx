@@ -60,12 +60,12 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 			className={`${
 				visible ? 'opacity-100 z-[1000]' : 'opacity-0 z-[-100]'
 			} duration-500 fixed h-full left-0 top-0 overflow-x-hidden w-full lg:opacity-100 lg:shadow-lg lg:w-1/5 lg:z-0`}
-			ref={ref}
 			style={{
 				backgroundColor: 'rgba(0, 0, 0, 0.2)',
 			}}
 		>
 			<div
+				ref={ref}
 				className={`${
 					visible ? 'translate-x-0' : 'translate-x-full'
 				} ${sidebarStyle}`}
