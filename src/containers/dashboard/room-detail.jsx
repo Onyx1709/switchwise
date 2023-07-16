@@ -22,7 +22,7 @@ function RoomDetail() {
 				<h4 className="font-semibold my-4 text-secondary-500 text-sm md:text-base">
 					Turn devices ON/OFF using the toggle.
 				</h4>
-				<div className="gap-8 grid grid-cols-2 my-3 md:grid-cols-3">
+				<div className="gap-x-4 gap-y-8 grid grid-cols-2 my-3 sm:gap-x-6 md:gap-x-8 md:grid-cols-3">
 					{room.devices.map((device, index) => (
 						<Device key={index} roomId={room.id} {...device} />
 					))}

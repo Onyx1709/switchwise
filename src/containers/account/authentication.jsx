@@ -60,11 +60,11 @@ function Authentication() {
 				Authentication
 			</h2>
 			<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
-				Enter the authentcation code provided to you by the admin
+				Enter the authentcation code provided to you by the admin.
 			</p>
 			<form className="py-4">
 				<div className="flex items-center justify-between">
-					<div className="px-3">
+					<div className="px-1 sm:px-2 lg:px-3">
 						<Input
 							className="border-secondary-500 font-medium py-2 text-center text-2xl"
 							placeholder="-"
@@ -75,7 +75,7 @@ function Authentication() {
 							ref={ref1}
 						/>
 					</div>
-					<div className="px-3">
+					<div className="px-1 sm:px-2 lg:px-3">
 						<Input
 							className="border-secondary-500 font-medium py-2 text-center text-2xl"
 							placeholder="-"
@@ -86,7 +86,7 @@ function Authentication() {
 							ref={ref2}
 						/>
 					</div>
-					<div className="px-3">
+					<div className="px-1 sm:px-2 lg:px-3">
 						<Input
 							className="border-secondary-500 font-medium py-2 text-center text-2xl"
 							placeholder="-"
@@ -97,7 +97,7 @@ function Authentication() {
 							ref={ref3}
 						/>
 					</div>
-					<div className="px-3">
+					<div className="px-1 sm:px-2 lg:px-3">
 						<Input
 							className="border-secondary-500 font-medium py-2 text-center text-2xl"
 							placeholder="-"
