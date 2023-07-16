@@ -11,7 +11,7 @@ const classes =
 const activeClasses = 'bg-primary-500 text-gray-100';
 const inactiveClasses = 'bg-transparent text-primary-500';
 
-function Icon({ name, ...props }) {
+function Icon({ active, name, ...props }) {
 	const Component =
 		name === 'bulb'
 			? Bulb
@@ -27,7 +27,7 @@ function Icon({ name, ...props }) {
 
 	return (
 		<span className="text-5xl lg:text-7xl">
-			<Component {...props} />
+			<Component active={name !== 'bulb' ? active : undefined} {...props} />
 		</span>
 	);
 }
