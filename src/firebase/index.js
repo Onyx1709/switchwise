@@ -3,7 +3,7 @@ import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { connectDatabaseEmulator, getDatabase } from 'firebase/database';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
 
-import { NODE_ENV } from '../../config';
+import { USE_FIREBASE_EMULATOR } from '../../config';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,13 +17,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(USE_FIREBASE_EMULATOR ? undefined : firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getDatabase(app);
 export const storage = getStorage(app);
 
-if (NODE_ENV === 'development') {
+if (USE_FIREBASE_EMULATOR) {
 	const authUrl = `http://localhost:${
 		import.meta.env.VITE_FIREBASE_AUTH_EMULATOR_PORT
 	}`;
