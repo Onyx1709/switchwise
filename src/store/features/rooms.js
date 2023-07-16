@@ -78,7 +78,7 @@ const initialState = {
 				},
 				{
 					id: 2,
-					icon: 'water-drop',
+					icon: 'water',
 					name: 'pumping machine',
 					state: 'off',
 				},
