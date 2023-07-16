@@ -104,15 +104,11 @@ const roomSlice = createSlice({
 		toggleDeviceState(state, { payload }) {
 			const room = state.data.find((room) => room.id === payload.roomId);
 			if (!room)
-				state.error = [
-					`Room with specified ID: ${payload.roomId} was not found.`,
-				];
+				state.error = `Room with specified ID: ${payload.roomId} was not found.`;
 			else {
 				const device = room.devices.find((device) => device.id === payload.id);
 				if (!device)
-					state.error = [
-						`Device with specified ID: ${payload.device} in ${room.name} section was not found.`,
-					];
+					state.error = `Device with specified ID: ${payload.device} in ${room.name} section was not found.`;
 				else {
 					device.state = payload.state;
 				}
