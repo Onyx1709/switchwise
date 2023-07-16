@@ -8,7 +8,7 @@ function Dashboard() {
 
 	return (
 		<div className="w-full">
-			<div className="h-[225px] mb-3 w-full">
+			<div className="h-[225px] mb-3 w-full sm:h-[250px] md:h-[275px] lg:h-[300px]">
 				<img
 					className="h-full w-full"
 					src="/images/dashboard-desktop.png"
