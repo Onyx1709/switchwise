@@ -24,3 +24,15 @@ p {
 	margin: 0;
 	padding: 0;
 }
+
+.ant-switch-checked.active-device {
+	@apply bg-gray-100;
+}
+
+.ant-switch-checked.active-device:hover {
+	@apply hover:bg-gray-300;
+}
+
+.ant-switch-checked.active-device .ant-switch-handle::before {
+	@apply bg-primary-500;
+}
