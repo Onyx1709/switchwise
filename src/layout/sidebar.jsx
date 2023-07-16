@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import {
 	CloseOutlined,
-	LeftSquareOutlined,
 	LogoutOutlined,
 	HomeOutlined,
 	SettingOutlined,
 	UserOutlined,
+	WindowsOutlined,
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import React from 'react';
@@ -20,7 +20,7 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 	const links = React.useMemo(
 		() => [
 			{
-				icon: LeftSquareOutlined,
+				icon: WindowsOutlined,
 				title: 'Home',
 				href: routes.DASHBOARD_PAGE,
 				onClick: () => setVisible(false),
