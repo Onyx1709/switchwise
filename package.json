@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "firebase:dev": "firebase emulators:start --import=./firebase --export-on-exit=./firebase"
+    "firebase:dev": "firebase emulators:start --import=./firebase-export --export-on-exit=./firebase-export"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
