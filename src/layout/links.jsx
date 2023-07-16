@@ -69,7 +69,11 @@ export function ListLink({ icon: Icon, onClick, links, title }) {
 				href && href !== '/' && _pathname !== '/' && _pathname.startsWith(href)
 		);
 
-		return active1 || active2 ? true : false;
+		const active = active1 || active2 ? true : false;
+
+		if (active) setVisible(true);
+
+		return active;
 	}, [links, pathname]);
 
 	return (
