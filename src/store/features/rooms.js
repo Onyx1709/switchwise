@@ -11,7 +11,7 @@ const initialState = {
 					id: 1,
 					icon: 'bulb',
 					name: 'lights',
-					state: 'on',
+					state: 'off',
 				},
 				{
 					id: 2,
@@ -36,7 +36,7 @@ const initialState = {
 					id: 1,
 					icon: 'bulb',
 					name: 'lights',
-					state: 'on',
+					state: 'off',
 				},
 				{
 					id: 2,
@@ -55,7 +55,7 @@ const initialState = {
 					id: 1,
 					icon: 'bulb',
 					name: 'lights',
-					state: 'on',
+					state: 'off',
 				},
 				{
 					id: 2,
@@ -74,7 +74,7 @@ const initialState = {
 					id: 1,
 					icon: 'bulb',
 					name: 'security lights',
-					state: 'on',
+					state: 'off',
 				},
 				{
 					id: 2,
