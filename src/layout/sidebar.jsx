@@ -79,14 +79,14 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 			>
 				<div className="flex items-center justify-between px-4 py-5 lg:hidden">
 					<span
-						className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105"
+						className="cursor-pointer duration-300 text-secondary-500 text-lg transform transition hover:scale-105"
 						onClick={() => setVisible(false)}
 					>
 						<CloseOutlined />
 					</span>
 					<Link
 						to={routes.HOME_PAGE}
-						className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105"
+						className="cursor-pointer duration-300 no-underline text-secondary-500 text-lg transform transition hover:scale-105"
 					>
 						<ArrowRightOutlined />
 					</Link>
