@@ -62,8 +62,8 @@ function Home() {
 						<span className="text-primary-500">anywhere</span> in the world.
 					</h1>
 					<p className="my-2 text-center text-secondary-500 text-sm md:my-4 md:text-left lg:font-medium lg:leading-8 lg:text-base">
-						Introducing our innovate smart switcing app that puts you in control
-						of your home like never before. Say hello to simplicity and
+						Introducing our innovating smart switching app that puts you in
+						control of your home like never before. Say hello to simplicity and
 						effective switching services.
 					</p>
 					<div className="flex justify-center my-3 md:justify-start">
