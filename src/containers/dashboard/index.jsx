@@ -1,34 +1,18 @@
-const rooms = [
-	{
-		image: '/images/living-room.png',
-		name: 'Living Room',
-		numberOfDevices: 3,
-	},
-	{
-		image: '/images/bedroom-1.png',
-		name: 'Bedroom 1',
-		numberOfDevices: 2,
-	},
-	{
-		image: '/images/bedroom-2.png',
-		name: 'Bedroom 2',
-		numberOfDevices: 2,
-	},
-	{
-		image: '/images/others-1.png',
-		name: 'Others',
-		numberOfDevices: 3,
-	},
-];
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { ROOM_PAGE } from '../../config/routes';
 
 function Dashboard() {
+	const rooms = useSelector((state) => state.rooms.data);
+
 	return (
 		<div className="w-full">
 			<div className="h-[225px] mb-3 w-full">
 				<img
 					className="h-full w-full"
 					src="/images/dashboard-desktop.png"
-					alt="deashboard"
+					alt="dashboard"
 				/>
 			</div>
 			<div className="my-2 py-2">
@@ -37,8 +21,9 @@ function Dashboard() {
 				</h4>
 				<div className="gap-8 grid grid-cols-1 my-3 sm:grid-cols-2 lg:grid-cols-3">
 					{rooms.map((room, index) => (
-						<div
-							className="bg-white cursor-pointer duration-500 rounded-md shadow-lg transform hover:scale-105"
+						<Link
+							className="bg-white cursor-pointer duration-500 no-underline rounded-md shadow-lg transform hover:scale-105"
+							to={ROOM_PAGE(room.id)}
 							key={index}
 						>
 							<div className="h-40 rounded-t-md w-full">
@@ -49,14 +34,15 @@ function Dashboard() {
 								/>
 							</div>
 							<div className="flex items-center justify-between px-4 py-2 text-primary-500">
-								<h5 className="font-medium text-sm tracking-wide md:text-base">
+								<h5 className="font-medium m-0 p-0 text-sm tracking-wide md:text-base">
 									{room.name}
 								</h5>
-								<p className="font-medium text-sm md:text-base">
-									{room.numberOfDevices} <small>devices</small>
+								<p className="font-medium m-0 p-0 text-sm md:text-base">
+									{room.devices.length}{' '}
+									<small className="m-0 p-0">devices</small>
 								</p>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>
