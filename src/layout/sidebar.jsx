@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import {
+	ArrowRightOutlined,
 	CloseOutlined,
 	LogoutOutlined,
 	HomeOutlined,
 	SettingOutlined,
-	UserOutlined,
 	WindowsOutlined,
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ListLink, SimpleLink } from './links';
 import routes from '../config/routes';
@@ -83,9 +84,12 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 					>
 						<CloseOutlined />
 					</span>
-					<span className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105">
-						<UserOutlined />
-					</span>
+					<Link
+						to={routes.HOME_PAGE}
+						className="cursor-pointer duration-300 text-color-primary text-lg transform transition hover:scale-105"
+					>
+						<ArrowRightOutlined />
+					</Link>
 				</div>
 				<div className="hidden p-4 pt-0 md:block">
 					<div className="h-[24px] w-[150px]">
