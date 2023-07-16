@@ -1,8 +1,4 @@
-import {
-	BarsOutlined,
-	BellOutlined,
-	ArrowRightOutlined,
-} from '@ant-design/icons';
+import { BarsOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
 
 import Sidebar from './sidebar';
@@ -55,9 +51,6 @@ function Layout() {
 							Welcome, TheJohnDoe
 						</h3>
 						<div className="flex items center">
-							<span className="cursor-pointer duration-500 font-semibold mx-4 text-secondary-500 text-lg transform hover:scale-105">
-								<BellOutlined />
-							</span>
 							<Link
 								to={pageRoutes.HOME_PAGE}
 								className="cursor-pointer duration-500 font-semibold ml-4 text-secondary-500 text-lg transform hover:scale-105"
