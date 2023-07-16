@@ -17,7 +17,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(USE_FIREBASE_EMULATOR ? undefined : firebaseConfig);
+const app = initializeApp(USE_FIREBASE_EMULATOR ? {
+	projectId: firebaseConfig.projectId
+} : firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getDatabase(app);
