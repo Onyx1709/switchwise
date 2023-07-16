@@ -23,6 +23,7 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 				icon: LeftSquareOutlined,
 				title: 'Home',
 				href: routes.DASHBOARD_PAGE,
+				onClick: () => setVisible(false),
 			},
 			{
 				icon: HomeOutlined,
@@ -31,18 +32,22 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 					{
 						title: 'Living Room',
 						href: routes.ROOM_PAGE('living-room'),
+						onClick: () => setVisible(false),
 					},
 					{
 						title: 'Bedroom 1',
 						href: routes.ROOM_PAGE('bedroom-1'),
+						onClick: () => setVisible(false),
 					},
 					{
 						title: 'Bedroom 2',
 						href: routes.ROOM_PAGE('bedroom-2'),
+						onClick: () => setVisible(false),
 					},
 					{
 						title: 'Others',
 						href: routes.ROOM_PAGE('others'),
+						onClick: () => setVisible(false),
 					},
 				],
 			},
@@ -50,9 +55,10 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 				icon: SettingOutlined,
 				title: 'Settings',
 				href: routes.SETTINGS_PAGE,
+				onClick: () => setVisible(false),
 			},
 		],
-		[]
+		[setVisible]
 	);
 
 	return (
