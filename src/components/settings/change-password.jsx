@@ -7,27 +7,6 @@ function ChangePassword() {
 			<div className="my-5">
 				<label
 					className="block font-medium my-1 text-xs text-secondary-400"
-					htmlFor="currentPassword"
-				>
-					Current Password
-				</label>
-				<Input.Password
-					allowClear
-					className="border-secondary-500 rounded-3xl"
-					id="currentPassword"
-					iconRender={(visible) =>
-						visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-					}
-					name="currentPassword"
-					placeholder="**********"
-					shape="round"
-					size="large"
-					// type="password"
-				/>
-			</div>
-			<div className="my-5">
-				<label
-					className="block font-medium my-1 text-xs text-secondary-400"
 					htmlFor="newPassword"
 				>
 					New Password

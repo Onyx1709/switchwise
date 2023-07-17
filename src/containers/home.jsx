@@ -1,7 +1,4 @@
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
-
-import routes from '../config/routes';
+import { HomeButtons, NavButtons } from '../components/home';
 
 function Home() {
 	return (
@@ -20,22 +17,7 @@ function Home() {
 						alt="SwitchWise"
 					/>
 				</div>
-				<div className="hidden md:flex md:items-center">
-					<div className="mx-4">
-						<Link className="w-full" to={routes.LOGIN_PAGE}>
-							<Button block shape="round" size="large" type="default">
-								<span className="inline-block px-4 text-sm">Log In</span>
-							</Button>
-						</Link>
-					</div>
-					<div>
-						<Link className="w-full" to={routes.REGISTER_PAGE}>
-							<Button block shape="round" size="large" type="primary">
-								<span className="inline-block px-4 text-sm">Sign Up</span>
-							</Button>
-						</Link>
-					</div>
-				</div>
+				<NavButtons />
 			</div>
 			{/* Header */}
 
@@ -66,26 +48,7 @@ function Home() {
 						control of your home like never before. Say hello to simplicity and
 						effective switching services.
 					</p>
-					<div className="flex justify-center my-3 md:justify-start">
-						<Link className="hidden md:inline" to={routes.REGISTER_PAGE}>
-							<Button size="large" shape="round" type="primary">
-								<span className="px-4 text-sm">Get Started</span>
-							</Button>
-						</Link>
-						<Link className="mx-2 md:hidden" to={routes.REGISTER_PAGE}>
-							<Button size="large" shape="round" type="primary">
-								<span className="px-4 text-sm">Sign Up</span>
-							</Button>
-						</Link>
-						<Link
-							className="inline-block mx-2 md:hidden"
-							to={routes.LOGIN_PAGE}
-						>
-							<Button size="large" shape="round" type="default">
-								<span className="px-4 text-sm">Login</span>
-							</Button>
-						</Link>
-					</div>
+					<HomeButtons />
 				</div>
 				{/* Introduction */}
 			</div>
