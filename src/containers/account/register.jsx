@@ -1,38 +1,20 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Alert, Button, Checkbox, Input } from 'antd';
-import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Form, Link, useActionData } from 'react-router-dom';
 
 import routes from '../../config/routes';
-import { login } from '../../store/features/auth';
 
 function Register() {
 	const action = useActionData();
-	const dispatch = useDispatch();
-
-	const { data, error } = React.useMemo(() => {
-		const value = {
-			data: undefined,
-			error: undefined,
-		};
-		if (action?.data) value.data = action.data;
-		if (action?.error) value.error = action.error;
-		return value;
-	}, [action]);
-
-	React.useEffect(() => {
-		if (data) dispatch(login(data));
-	}, [data, dispatch]);
 
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
 				Sign Up
 			</h2>
-			{error && (
+			{action?.error && (
 				<div>
-					<Alert message={error.message} showIcon type="error" />
+					<Alert message={action.error.message} showIcon type="error" />
 				</div>
 			)}
 			<Form method="post" action={routes.REGISTER_PAGE}>
@@ -117,26 +99,6 @@ function Register() {
 						type="primary"
 					>
 						<span className="px-4 text-sm">Sign Up</span>
-					</Button>
-				</div>
-				<h3 className="font-medium text-center text-secondary-500">OR</h3>
-				<div className="my-5">
-					<Button
-						block
-						className="border-0 bg-secondary-500 hover:border-0 hover:bg-secondary-400"
-						htmlType="button"
-						size="large"
-						shape="round"
-						title="Log In with Gmail"
-					>
-						<span className="inline-block text-sm text-gray-100">
-							<img
-								className="h-[16px] mr-2 w-[16px]"
-								src="/images/logos_google-icon.png"
-								alt=""
-							/>
-							Sign Up with Gmail
-						</span>
 					</Button>
 				</div>
 			</Form>

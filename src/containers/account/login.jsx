@@ -69,26 +69,6 @@ function Login() {
 						<span className="px-4 text-sm">Log In</span>
 					</Button>
 				</div>
-				<h3 className="font-medium text-center text-secondary-500">OR</h3>
-				<div className="my-5">
-					<Button
-						block
-						className="border-0 bg-secondary-500 hover:border-0 hover:bg-secondary-400"
-						htmlType="button"
-						size="large"
-						shape="round"
-						title="Log In with Gmail"
-					>
-						<span className="inline-block text-sm text-gray-100">
-							<img
-								className="h-[16px] mr-2 w-[16px]"
-								src="/images/logos_google-icon.png"
-								alt=""
-							/>
-							Log In with Gmail
-						</span>
-					</Button>
-				</div>
 			</form>
 			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
 				New to SwitchWise?{' '}
