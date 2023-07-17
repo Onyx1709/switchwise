@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 import { ListLink, SimpleLink } from './links';
 import routes from '../config/routes';
+import useLogout from '../hooks/useLogout';
 
 const sidebarStyle =
 	'bg-white duration-1000 h-full ml-auto overflow-y-auto relative shadow-lg transform w-3/5 md:px-2 md:w-1/3 lg:bg-gray-100 lg:px-0 lg:py-4 lg:translate-x-0 lg:w-full';
@@ -61,6 +62,8 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 		],
 		[setVisible]
 	);
+
+	const { logout: handleLogout, loading: logoutLoading } = useLogout();
 
 	return (
 		<nav
@@ -111,13 +114,19 @@ const Sidebar = ({ setVisible, visible }, ref) => {
 						})}
 					</div>
 					<div className="sidebar-logout w-full">
-						<Button block size="large" type="ghost">
-							<p className="flex items-center text-red-500 text-sm">
-								<span className="mr-2">
+						<Button
+							disabled={logoutLoading}
+							loading={logoutLoading}
+							onClick={handleLogout}
+							icon={
+								<span className="text-red-500 text-sm">
 									<LogoutOutlined />
 								</span>
-								Logout
-							</p>
+							}
+							size="large"
+							type="ghost"
+						>
+							<span className="text-red-500 text-sm">Logout</span>
 						</Button>
 					</div>
 				</div>

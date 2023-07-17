@@ -1,26 +1,13 @@
 import { Button } from 'antd';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import routes from '../../config/routes';
-import { logout } from '../../firebase/auth';
+import useLogout from '../../hooks/useLogout';
 
 export function NavButtons() {
 	const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
-	const [logoutLoading, setLogoutLoading] = React.useState(false);
-
-	const handleLogout = React.useCallback(async () => {
-		try {
-			setLogoutLoading(true);
-			const { error } = await logout();
-			if (error) window.alert(error.message);
-		} catch (error) {
-			window.alert(error.message);
-		} finally {
-			setLogoutLoading(false);
-		}
-	}, []);
+	const { logout: handleLogout, loading: logoutLoading } = useLogout();
 
 	if (isLoading) return <>Loading...</>;
 
@@ -80,19 +67,7 @@ export function NavButtons() {
 
 export function HomeButtons() {
 	const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
-	const [logoutLoading, setLogoutLoading] = React.useState(false);
-
-	const handleLogout = React.useCallback(async () => {
-		try {
-			setLogoutLoading(true);
-			const { error } = await logout();
-			if (error) window.alert(error.message);
-		} catch (error) {
-			window.alert(error.message);
-		} finally {
-			setLogoutLoading(false);
-		}
-	}, []);
+	const { logout: handleLogout, loading: logoutLoading } = useLogout();
 
 	if (isLoading) return <>Loading...</>;
 
