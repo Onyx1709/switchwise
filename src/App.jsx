@@ -2,6 +2,7 @@ import { ConfigProvider } from 'antd';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
+import CheckAuth from './layout/protections/check-auth';
 import router from './routes';
 import store from './store';
 
@@ -15,7 +16,9 @@ function App() {
 					},
 				}}
 			>
-				<RouterProvider router={router} />
+				<CheckAuth>
+					<RouterProvider router={router} />
+				</CheckAuth>
 			</ConfigProvider>
 		</Provider>
 	);
