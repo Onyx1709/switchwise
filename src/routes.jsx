@@ -26,6 +26,7 @@ import RoomDetail from './pages/dashboard/rooms/detail';
 import Settings from './pages/dashboard/settings';
 
 // APIs
+import login from './api/account/login';
 import register from './api/account/register';
 
 const routes = [
@@ -58,6 +59,7 @@ const routes = [
 						element: <ForgotPassword />,
 					},
 					{
+						action: login,
 						path: pageRoutes.LOGIN_PAGE,
 						element: <Login />,
 					},

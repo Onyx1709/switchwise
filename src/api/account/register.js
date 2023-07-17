@@ -26,10 +26,16 @@ export default async function register({ request }) {
 				password: data.password,
 			});
 
+			// Check if there is an error in the response and throw it
+			if (response.error) throw new Error(response.error.message);
+
 			// Update displayName in profile info with fullName
-			await updateProfileInfo({
+			const updateResponse = await updateProfileInfo({
 				displayName: data.displayName,
 			});
+
+			// Check if there is an error in the update response and throw it
+			if (updateResponse.error) throw new Error(updateResponse.error.message);
 
 			// Remove the password
 			delete data.password;

@@ -1,16 +1,23 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Button, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { Alert, Button, Input } from 'antd';
+import { Form, Link, useActionData } from 'react-router-dom';
 
 import routes from '../../config/routes';
 
 function Login() {
+	const action = useActionData();
+
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
 				Log In
 			</h2>
-			<form>
+			{action?.error && (
+				<div>
+					<Alert message={action.error.message} showIcon type="error" />
+				</div>
+			)}
+			<Form method="post" action={routes.LOGIN_PAGE}>
 				<div className="my-5">
 					<label
 						className="block font-medium my-1 text-xs text-secondary-400"
@@ -62,6 +69,7 @@ function Login() {
 					<Button
 						block
 						htmlType="submit"
+						name="submit"
 						size="large"
 						shape="round"
 						type="primary"
@@ -69,7 +77,7 @@ function Login() {
 						<span className="px-4 text-sm">Log In</span>
 					</Button>
 				</div>
-			</form>
+			</Form>
 			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
 				New to SwitchWise?{' '}
 				<Link to={routes.REGISTER_PAGE}>
