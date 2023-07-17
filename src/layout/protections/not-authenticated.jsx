@@ -48,7 +48,7 @@ function NotAuthenticated() {
 				nextRoute = state.next;
 
 			// Add a forward slash at the end if not found
-			if (!nextRoute.endsWith('/') && nextRoute !== '/') nextRoute += '/';
+			// if (!nextRoute.endsWith('/') && nextRoute !== '/') nextRoute += '/';
 
 			// Make sure the next route also starts with a '/'
 			if (nextRoute !== '/' && !nextRoute.startsWith('/'))

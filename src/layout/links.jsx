@@ -60,13 +60,10 @@ export function ListLink({ icon: Icon, onClick, links, title }) {
 	const { pathname } = useLocation();
 
 	const isActive = React.useMemo(() => {
-		const _pathname =
-			pathname !== '/' && !pathname.endsWith('/') ? pathname + '/' : pathname;
-
-		const active1 = links.find(({ href }) => href === _pathname);
+		const active1 = links.find(({ href }) => href === pathname);
 		const active2 = links.find(
 			({ href }) =>
-				href && href !== '/' && _pathname !== '/' && _pathname.startsWith(href)
+				href && href !== '/' && pathname !== '/' && pathname.startsWith(href)
 		);
 
 		const active = active1 || active2 ? true : false;

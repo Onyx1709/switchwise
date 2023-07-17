@@ -6,7 +6,7 @@ import { connectStorageEmulator, getStorage } from 'firebase/storage';
 import { USE_FIREBASE_EMULATOR } from '../config';
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const config = {
 	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
 	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
 	databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
@@ -17,9 +17,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(USE_FIREBASE_EMULATOR ? {
-	projectId: firebaseConfig.projectId
-} : firebaseConfig);
+const app = initializeApp(config);
 
 export const auth = getAuth(app);
 export const db = getDatabase(app);

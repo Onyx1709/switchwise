@@ -2,15 +2,15 @@ export const HOME_PAGE = '/';
 
 // Auth
 export const AUTH_BASE_PAGE = '/account';
-export const AUTHENTICATION_PAGE = AUTH_BASE_PAGE + '/authentication/';
-export const FORGOT_PASSWORD_PAGE = AUTH_BASE_PAGE + '/forgot-password/';
-export const LOGIN_PAGE = AUTH_BASE_PAGE + '/login/';
-export const REGISTER_PAGE = AUTH_BASE_PAGE + '/register/';
+export const AUTHENTICATION_PAGE = AUTH_BASE_PAGE + '/authentication';
+export const FORGOT_PASSWORD_PAGE = AUTH_BASE_PAGE + '/forgot-password';
+export const LOGIN_PAGE = AUTH_BASE_PAGE + '/login';
+export const REGISTER_PAGE = AUTH_BASE_PAGE + '/register';
 
 // Dashboard
-export const DASHBOARD_PAGE = '/dashboard/';
-export const ROOM_PAGE = (id) => '/dashboard/rooms/' + id + '/';
-export const SETTINGS_PAGE = '/dashboard/settings/';
+export const DASHBOARD_PAGE = '/dashboard';
+export const ROOM_PAGE = (id) => '/dashboard/rooms/' + id;
+export const SETTINGS_PAGE = '/dashboard/settings';
 
 const routes = {
 	// Auth
