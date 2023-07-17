@@ -27,6 +27,7 @@ import Settings from './pages/dashboard/settings';
 
 // APIs
 import login from './api/account/login';
+import updateUserInfo from './api/account/update-user-info';
 import register from './api/account/register';
 
 const routes = [
@@ -107,6 +108,7 @@ const routes = [
 						element: <RoomDetail />,
 					},
 					{
+						action: updateUserInfo,
 						path: pageRoutes.SETTINGS_PAGE,
 						element: <Settings />,
 					},

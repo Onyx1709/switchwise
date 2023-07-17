@@ -32,6 +32,11 @@ export default async function login({ request }) {
 				},
 			};
 		}
+		return {
+			error: {
+				message: 'API route was not found.',
+			},
+		};
 	} catch (error) {
 		return {
 			error: {

@@ -47,6 +47,11 @@ export default async function register({ request }) {
 				},
 			};
 		}
+		return {
+			error: {
+				message: 'API route was not found.',
+			},
+		};
 	} catch (error) {
 		return {
 			error: {
