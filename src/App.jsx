@@ -2,6 +2,7 @@ import { ConfigProvider } from 'antd';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
+import ErrorBoundary from './components/error-boundary';
 import CheckAuth from './layout/protections/check-auth';
 import router from './routes';
 import store from './store';
@@ -16,9 +17,11 @@ function App() {
 					},
 				}}
 			>
-				<CheckAuth>
-					<RouterProvider router={router} />
-				</CheckAuth>
+				<ErrorBoundary>
+					<CheckAuth>
+						<RouterProvider router={router} />
+					</CheckAuth>
+				</ErrorBoundary>
 			</ConfigProvider>
 		</Provider>
 	);
