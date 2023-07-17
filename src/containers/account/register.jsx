@@ -1,29 +1,54 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Button, Checkbox, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { Alert, Button, Checkbox, Input } from 'antd';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Form, Link, useActionData } from 'react-router-dom';
 
 import routes from '../../config/routes';
+import { login } from '../../store/features/auth';
 
 function Register() {
+	const action = useActionData();
+	const dispatch = useDispatch();
+
+	const { data, error } = React.useMemo(() => {
+		const value = {
+			data: undefined,
+			error: undefined,
+		};
+		if (action?.data) value.data = action.data;
+		if (action?.error) value.error = action.error;
+		return value;
+	}, [action]);
+
+	React.useEffect(() => {
+		if (data) dispatch(login(data));
+	}, [data, dispatch]);
+
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
 				Sign Up
 			</h2>
-			<form>
+			{error && (
+				<div>
+					<Alert message={error.message} showIcon type="error" />
+				</div>
+			)}
+			<Form method="post" action={routes.REGISTER_PAGE}>
 				<div className="my-5">
 					<label
 						className="block font-medium my-1 text-xs text-secondary-400"
-						htmlFor="fullName"
+						htmlFor="full_name"
 					>
 						Full name
 					</label>
 					<Input
 						allowClear
 						className="border-secondary-500 rounded-3xl"
-						id="fullName"
-						name="fullName"
-						placeholder="johndoe@gmail.com"
+						id="full_name"
+						name="full_name"
+						placeholder="John Doe"
 						size="large"
 						// status="error"
 						type="text"
@@ -70,7 +95,7 @@ function Register() {
 					/>
 				</div>
 				<div className="text-right">
-					<Checkbox>
+					<Checkbox name="accept_terms">
 						I agree to the{' '}
 						<Link className="text-primary-500" to="#">
 							terms and conditions,
@@ -86,6 +111,7 @@ function Register() {
 					<Button
 						block
 						htmlType="submit"
+						name="submit"
 						size="large"
 						shape="round"
 						type="primary"
@@ -113,7 +139,7 @@ function Register() {
 						</span>
 					</Button>
 				</div>
-			</form>
+			</Form>
 			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
 				Already have an account?{' '}
 				<Link to={routes.LOGIN_PAGE}>

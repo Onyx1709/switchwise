@@ -10,9 +10,10 @@
 	padding: 0;
 }
 
-body {
+body,
+input {
 	font-family: 'Montserrat', Verdana, Inter, system-ui, Avenir, Helvetica, Arial,
-		sans-serif;
+		sans-serif !important;
 }
 h1,
 h2,

@@ -25,6 +25,9 @@ import Dashboard from './pages/dashboard';
 import RoomDetail from './pages/dashboard/rooms/detail';
 import Settings from './pages/dashboard/settings';
 
+// APIs
+import register from './api/account/register';
+
 const routes = [
 	{
 		index: true,
@@ -59,6 +62,7 @@ const routes = [
 						element: <Login />,
 					},
 					{
+						action: register,
 						path: pageRoutes.REGISTER_PAGE,
 						element: <Register />,
 					},
