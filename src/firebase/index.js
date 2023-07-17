@@ -3,7 +3,7 @@ import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { connectDatabaseEmulator, getDatabase } from 'firebase/database';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
 
-import { USE_FIREBASE_EMULATOR } from '../../config';
+import { USE_FIREBASE_EMULATOR } from '../config';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
