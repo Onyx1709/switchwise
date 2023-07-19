@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import { CameraOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, Button, Input } from 'antd';
 import React from 'react';
@@ -14,7 +15,6 @@ function Profile() {
 	const data = useSelector((state) => state.auth.data);
 
 	const [form, setForm] = React.useState(() => ({
-		email: data?.email || '',
 		full_name: data?.displayName || '',
 	}));
 
@@ -27,10 +27,14 @@ function Profile() {
 
 	React.useEffect(() => {
 		if (action?.data) {
-			dispatch(setData(action.data));
+			dispatch(
+				setData({
+					displayName: form.full_name,
+				})
+			);
 		}
 		if (action?.error) setError(action.error.message);
-	}, [action, dispatch]);
+	}, [action, dispatch, form]);
 
 	return (
 		<>
@@ -45,7 +49,7 @@ function Profile() {
 					/>
 				</div>
 			)}
-			<Form method="post" action={routes.SETTINGS_PAGE}>
+			<Form method="put" action={routes.SETTINGS_PAGE}>
 				{/* <div className="border-2 border-solid border-secondary-500 cursor-pointer duration-500 flex h-14 items-center justify-center mx-auto my-4 relative rounded-full w-14 active:relative active:top-[2px] hover:scale-105">
 					<span className="text-2xl text-secondary-500">
 						<UserOutlined />
@@ -79,33 +83,6 @@ function Profile() {
 							}));
 						}}
 						value={form.full_name}
-					/>
-				</div>
-				<div className="my-5">
-					<label
-						className="block font-medium my-1 text-xs text-secondary-400"
-						htmlFor="email"
-					>
-						Email Address
-					</label>
-					<Input
-						allowClear
-						className="border-secondary-500 rounded-3xl"
-						disabled={loading}
-						id="email"
-						name="email"
-						placeholder="johndoe@gmail.com"
-						shape=""
-						size="large"
-						// status="error"
-						type="email"
-						onChange={({ target: { value } }) => {
-							setForm((prevState) => ({
-								...prevState,
-								email: value,
-							}));
-						}}
-						value={form.email}
 					/>
 				</div>
 

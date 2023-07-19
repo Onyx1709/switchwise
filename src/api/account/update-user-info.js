@@ -1,4 +1,4 @@
-import { changePassword } from '../../firebase/auth';
+import { changePassword, updateProfileInfo } from '../../firebase/auth';
 
 export default async function passwordChange({ request }) {
 	try {
@@ -30,6 +30,28 @@ export default async function passwordChange({ request }) {
 
 			return {
 				data: response.data,
+			};
+		}
+
+		if (request.method === 'PUT' && form.get('profile') !== undefined) {
+			// Get the data from the form
+			const data = {
+				displayName: form.get('full_name'),
+			};
+
+			// Verify the email and displayName
+			if (!data.displayName) throw new Error('Full name is required');
+
+			// Update profile info
+			const response = await updateProfileInfo(data);
+
+			// Check if there is an error in the response and throw it
+			if (response.error) throw new Error(response.error.message);
+
+			return {
+				data: {
+					message: 'Profile was updated successfully!',
+				},
 			};
 		}
 		return {

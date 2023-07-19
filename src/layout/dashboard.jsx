@@ -1,4 +1,5 @@
 import { BarsOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 
 import Sidebar from './sidebar';
@@ -7,6 +8,8 @@ import useOutsideClick from '../hooks/useOutsideClick';
 
 function Layout() {
 	const menu = useOutsideClick();
+
+	const data = useSelector((state) => state.auth.data);
 
 	return (
 		<div className="overflow-x-hidden w-full">
@@ -48,7 +51,7 @@ function Layout() {
 				<div className="h-full min-h-screen p-4 w-full sm:max-w-[580px] sm:mx-auto md:max-w-[768px] md:px-6 md:py-3 lg:max-w-none lg:ml-auto lg:mr-0 lg:px-12 lg:w-4/5">
 					<div className="hidden items-center justify-between my-3 lg:flex">
 						<h3 className="font-semibold text-base text-secondary-500">
-							Welcome, TheJohnDoe
+							Welcome, {data?.displayName || data?.email || 'Anonymous User'}
 						</h3>
 						<div className="flex items center">
 							<Link

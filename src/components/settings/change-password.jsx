@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Alert, Button, Input } from 'antd';
 import React from 'react';
