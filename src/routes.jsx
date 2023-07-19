@@ -25,6 +25,7 @@ import RoomDetail from './pages/dashboard/rooms/detail';
 import Settings from './pages/dashboard/settings';
 
 // APIs
+import forgotPassword from './api/account/forgot-password';
 import login from './api/account/login';
 import updateUserInfo from './api/account/update-user-info';
 
@@ -54,6 +55,7 @@ const routes = [
 				element: <NotAuthenticated />,
 				children: [
 					{
+						action: forgotPassword,
 						path: pageRoutes.FORGOT_PASSWORD_PAGE,
 						element: <ForgotPassword />,
 					},

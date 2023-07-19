@@ -1,16 +1,26 @@
-import { Button, Input } from 'antd';
+import { Alert, Button, Input } from 'antd';
+import { Form, useActionData } from 'react-router-dom';
+
+import routes from '../../config/routes';
 
 function ForgotPassword() {
+	const action = useActionData();
+
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
 				Forgot Password?
 			</h2>
+			{action?.error && (
+				<div>
+					<Alert message={action.error.message} showIcon type="error" />
+				</div>
+			)}
 			<p className="font-medium leading-6 my-3 px-2 text-center text-secondary-500 text-sm">
 				Enter your registered email address to receive your password reset
 				instructions.
 			</p>
-			<form>
+			<Form method="post" action={routes.FORGOT_PASSWORD_PAGE}>
 				<div className="my-5">
 					<label
 						className="block font-medium my-1 text-xs text-secondary-400"
@@ -41,7 +51,7 @@ function ForgotPassword() {
 						<span className="px-4 text-sm">Continue</span>
 					</Button>
 				</div>
-			</form>
+			</Form>
 		</>
 	);
 }

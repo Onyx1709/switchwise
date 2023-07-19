@@ -14,8 +14,11 @@ export default async function forgotPassword({ request }) {
 			// check the email field was passed
 			if (!data.email) throw new Error('Email address is required!');
 
-			// rest the password
-			await resetPassword({ email: data.email });
+			// reset the password
+			const response = await resetPassword({ email: data.email });
+
+			// check for response error
+			if (response.error) throw new Error(response.error.message);
 
 			return {
 				data: {
