@@ -16,7 +16,18 @@ function RoomDetail() {
 	return (
 		<div className="w-full">
 			<div className="h-[225px] mb-3 w-full sm:h-[250px] md:h-[275px] lg:h-[300px]">
-				<img className="h-full w-full" src={room.image} alt={room.name} />
+				<img
+					className={`h-full w-full ${room.desktop ? 'md:hidden' : ''}`}
+					src={room.image}
+					alt={room.name}
+				/>
+				{room.desktop && (
+					<img
+						className="hidden h-full w-full md:inline"
+						src={room.desktop}
+						alt={room.name}
+					/>
+				)}
 			</div>
 			<div className="my-2 py-2">
 				<h4 className="font-semibold my-4 text-secondary-500 text-sm md:text-base">

@@ -4,7 +4,8 @@ const initialState = {
 	data: [
 		{
 			id: 'living-room',
-			image: '/images/living-room.png',
+			image: '/images/living-room-mobile.jpg',
+			desktop: '/images/living-room-desktop.jpg',
 			name: 'Living Room',
 			devices: [
 				{
@@ -29,7 +30,8 @@ const initialState = {
 		},
 		{
 			id: 'bedroom-1',
-			image: '/images/bedroom-1.png',
+			image: '/images/bedroom-1-mobile.jpg',
+			desktop: '/images/bedroom-1-desktop.jpg',
 			name: 'Bedroom 1',
 			devices: [
 				{
@@ -48,7 +50,8 @@ const initialState = {
 		},
 		{
 			id: 'bedroom-2',
-			image: '/images/bedroom-2.png',
+			// image: '/images/bedroom-2-mobile.svg',
+			image: '/images/bedroom-2-desktop.jpg',
 			name: 'Bedroom 2',
 			devices: [
 				{
@@ -67,7 +70,8 @@ const initialState = {
 		},
 		{
 			id: 'others',
-			image: '/images/others-1.png',
+			image: '/images/others-mobile.jpg',
+			desktop: '/images/others-desktop.jpg',
 			name: 'Others',
 			devices: [
 				{
