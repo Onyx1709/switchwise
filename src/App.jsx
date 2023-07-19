@@ -6,6 +6,7 @@ import ErrorBoundary from './components/error-boundary';
 import CheckAuth from './layout/protections/check-auth';
 import router from './routes';
 import store from './store';
+import NotificationProvider from './store/contexts/notification/provider';
 
 function App() {
 	return (
@@ -18,9 +19,11 @@ function App() {
 				}}
 			>
 				<ErrorBoundary>
-					<CheckAuth>
-						<RouterProvider router={router} />
-					</CheckAuth>
+					<NotificationProvider>
+						<CheckAuth>
+							<RouterProvider router={router} />
+						</CheckAuth>
+					</NotificationProvider>
 				</ErrorBoundary>
 			</ConfigProvider>
 		</Provider>
