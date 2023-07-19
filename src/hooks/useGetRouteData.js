@@ -8,13 +8,14 @@ function useGetRouteData({ id, onError }) {
 	const [loading, setLoading] = React.useState(true);
 
 	const handleLoad = React.useCallback(
-		({ error, data }) => {
-			if (data) setData(data);
-			if (error) setError(error);
+		({ error: newError, data: newData }) => {
+			console.log({ newData, data })
+			if (newData && newData !== data) setData(newData);
+			if (newError && newError !== error) setError(newError);
 
 			if (loading) setLoading(false);
 		},
-		[loading]
+		[data, error, loading]
 	);
 
 	React.useEffect(() => {

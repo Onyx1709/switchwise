@@ -14,7 +14,7 @@ export function getRouteData({ route, onError, onSuccess }) {
 		onValue(reference, (snapshot) => {
 			if (snapshot.exists()) {
 				const value = snapshot.val();
-				onSuccess({ route, value });
+				onSuccess(value);
 			} else onError({ message: `No switch exists on route: ${route}` });
 		});
 	} catch (error) {
@@ -34,7 +34,7 @@ export async function setRouteData({ route, onSuccess, onError, value }) {
 		// set data on reference
 		await set(reference, value);
 
-		if (onSuccess) onSuccess({ id: route, value });
+		if (onSuccess) onSuccess(value);
 	} catch (error) {
 		const err = handleError(error);
 		if (onError) onError(err);
