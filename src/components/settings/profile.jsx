@@ -2,13 +2,14 @@
 import { Alert, Button, Input } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, useActionData } from 'react-router-dom';
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
 import { setData } from '../../store/features/auth';
 
 function Profile() {
 	const action = useActionData();
+	const { state } = useNavigation();
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.auth.data);
 
@@ -18,6 +19,11 @@ function Profile() {
 	}));
 
 	const [error, setError] = React.useState(null);
+
+	const loading = React.useMemo(
+		() => state === 'submitting' || state === 'loading',
+		[state]
+	);
 
 	React.useEffect(() => {
 		if (action?.data) {
@@ -59,6 +65,7 @@ function Profile() {
 					<Input
 						allowClear
 						className="border-secondary-500 rounded-3xl"
+						disabled={loading}
 						id="full_name"
 						name="full_name"
 						placeholder="John Doe"
@@ -84,6 +91,7 @@ function Profile() {
 					<Input
 						allowClear
 						className="border-secondary-500 rounded-3xl"
+						disabled={loading}
 						id="email"
 						name="email"
 						placeholder="johndoe@gmail.com"
@@ -105,6 +113,8 @@ function Profile() {
 					<Button
 						block
 						htmlType="submit"
+						loading={loading}
+						disabled={loading}
 						name="profile"
 						size="large"
 						shape="round"

@@ -1,11 +1,18 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Alert, Button, Input } from 'antd';
-import { Form, Link, useActionData } from 'react-router-dom';
+import React from 'react';
+import { Form, Link, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
 
 function Login() {
 	const action = useActionData();
+	const { state } = useNavigation();
+
+	const loading = React.useMemo(
+		() => state === 'submitting' || state === 'loading',
+		[state]
+	);
 
 	return (
 		<>
@@ -30,6 +37,7 @@ function Login() {
 						className="border-secondary-500 rounded-3xl"
 						id="email"
 						name="email"
+						disabled={loading}
 						placeholder="johndoe@gmail.com"
 						shape=""
 						size="large"
@@ -48,6 +56,7 @@ function Login() {
 						allowClear
 						className="border-secondary-500 rounded-3xl"
 						id="password"
+						disabled={loading}
 						iconRender={(visible) =>
 							visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
 						}
@@ -70,6 +79,8 @@ function Login() {
 						block
 						htmlType="submit"
 						name="submit"
+						loading={loading}
+						disabled={loading}
 						size="large"
 						shape="round"
 						type="primary"

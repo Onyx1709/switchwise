@@ -1,7 +1,7 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Alert, Button, Input } from 'antd';
 import React from 'react';
-import { Form, useActionData } from 'react-router-dom';
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
 
@@ -13,6 +13,12 @@ function ChangePassword() {
 	const [error, setError] = React.useState(null);
 
 	const action = useActionData();
+	const { state } = useNavigation();
+
+	const loading = React.useMemo(
+		() => state === 'submitting' || state === 'loading',
+		[state]
+	);
 
 	React.useEffect(() => {
 		if (action?.data?.message) {
@@ -53,6 +59,7 @@ function ChangePassword() {
 								password1: value,
 							}));
 						}}
+						disabled={loading}
 						allowClear
 						className="border-secondary-500 rounded-3xl"
 						id="password1"
@@ -81,6 +88,7 @@ function ChangePassword() {
 								password2: value,
 							}));
 						}}
+						disabled={loading}
 						allowClear
 						className="border-secondary-500 rounded-3xl"
 						id="password2"
@@ -99,6 +107,8 @@ function ChangePassword() {
 						block
 						name="password"
 						htmlType="submit"
+						disabled={loading}
+						loading={loading}
 						size="large"
 						shape="round"
 						type="primary"
