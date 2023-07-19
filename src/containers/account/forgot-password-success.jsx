@@ -7,10 +7,10 @@ function ForgotPasswordSuccess() {
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
-				Successful
+				Reset Successful
 			</h2>
-			<div className="flex justify-center py-3 w-full">
-				<div className="w-full">
+			<div className="flex justify-center h-full py-3 w-full">
+				<div className="h-full max-h-[215px] max-w-[200px] w-full">
 					<img
 						className="h-full w-full"
 						src="/images/hand_holding_phone.png"

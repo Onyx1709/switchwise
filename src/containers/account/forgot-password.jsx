@@ -1,10 +1,18 @@
 import { Alert, Button, Input } from 'antd';
-import { Form, useActionData } from 'react-router-dom';
+import React from 'react';
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
 
 function ForgotPassword() {
 	const action = useActionData();
+
+	const { state } = useNavigation();
+
+	const loading = React.useMemo(
+		() => state === 'submitting' || state === 'loading',
+		[state]
+	);
 
 	return (
 		<>
@@ -32,6 +40,7 @@ function ForgotPassword() {
 						allowClear
 						className="border-secondary-500 rounded-3xl"
 						id="email"
+						disabled={loading}
 						name="email"
 						placeholder="johndoe@gmail.com"
 						shape=""
@@ -43,6 +52,8 @@ function ForgotPassword() {
 				<div className="my-3 py-2">
 					<Button
 						block
+						disabled={loading}
+						loading={loading}
 						htmlType="submit"
 						size="large"
 						shape="round"
