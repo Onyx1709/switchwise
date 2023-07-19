@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Bars, Bulb, FanIcon, GateIcon, SocketIcon, WaterIcon } from './icons';
 import useGetRouteData from '../../hooks/useGetRouteData';
-// import useSetRouteData from '../../hooks/useSetRouteData';
+import useSetRouteData from '../../hooks/useSetRouteData';
 import { useNotificationContext } from '../../store/contexts';
 
 const classes =
@@ -46,29 +46,32 @@ function Device({ id, icon, name }) {
 		},
 	});
 
-	// const { mutate } = useSetRouteData({
-	// 	id,
-	// 	name,
-	// 	onError(error) {
-	// 		api.error({
-	// 			message: `Toggle error at ${name} switch`,
-	// 			description: error.message,
-	// 		});
-	// 	},
-	// });
+	const { mutate } = useSetRouteData({
+		id,
+		name,
+		onError(error) {
+			api.error({
+				message: `Toggle error at ${name} switch`,
+				description: error.message,
+			});
+		},
+	});
 
 	const active = React.useMemo(() => data === 1, [data]);
 
-	// const handleToggle = React.useCallback((checked) => {
-	// 	// mutate(checked ? 1 : 0);
-	// }, []);
+	const handleToggle = React.useCallback(
+		(checked) => {
+			mutate({ value: checked ? 1 : 0 });
+		},
+		[mutate]
+	);
 
 	return (
 		<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
 			<div className="flex justify-end mb-1 w-full">
 				<Switch
 					className={active ? 'active-device' : undefined}
-					// onChange={handleToggle}
+					onChange={handleToggle}
 					checked={active}
 				/>
 			</div>
