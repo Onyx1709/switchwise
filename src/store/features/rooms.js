@@ -9,22 +9,19 @@ const initialState = {
 			name: 'Living Room',
 			devices: [
 				{
-					id: 1,
+					id: 'L1',
 					icon: 'bulb',
 					name: 'lights',
-					state: 'off',
 				},
 				{
-					id: 2,
+					id: 'L2',
 					icon: 'fan',
 					name: 'fan',
-					state: 'off',
 				},
 				{
-					id: 3,
+					id: 'L3',
 					icon: 'socket',
 					name: 'socket',
-					state: 'off',
 				},
 			],
 		},
@@ -35,16 +32,14 @@ const initialState = {
 			name: 'Bedroom 1',
 			devices: [
 				{
-					id: 1,
+					id: 'BD11',
 					icon: 'bulb',
 					name: 'lights',
-					state: 'off',
 				},
 				{
-					id: 2,
+					id: 'BD12',
 					icon: 'socket',
 					name: 'socket',
-					state: 'off',
 				},
 			],
 		},
@@ -55,16 +50,14 @@ const initialState = {
 			name: 'Bedroom 2',
 			devices: [
 				{
-					id: 1,
+					id: 'BD21',
 					icon: 'bulb',
 					name: 'lights',
-					state: 'off',
 				},
 				{
-					id: 2,
+					id: 'BD22',
 					icon: 'socket',
 					name: 'socket',
-					state: 'off',
 				},
 			],
 		},
@@ -75,22 +68,19 @@ const initialState = {
 			name: 'Others',
 			devices: [
 				{
-					id: 1,
+					id: 'OT1',
 					icon: 'bulb',
 					name: 'security lights',
-					state: 'off',
 				},
 				{
-					id: 2,
+					id: 'OT2',
 					icon: 'water',
 					name: 'pumping machine',
-					state: 'off',
 				},
 				{
-					id: 3,
+					id: 'OT3',
 					icon: 'gate',
 					name: 'gate',
-					state: 'off',
 				},
 			],
 		},

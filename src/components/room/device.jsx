@@ -4,6 +4,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Bars, Bulb, FanIcon, GateIcon, SocketIcon, WaterIcon } from './icons';
+import useGetRouteData from '../../hooks/useGetRouteData';
+// import useSetRouteData from '../../hooks/useSetRouteData';
+import { useNotificationContext } from '../../store/contexts';
 import { toggleDeviceState } from '../../store/features/rooms';
 
 const classes =
@@ -32,10 +35,29 @@ function Icon({ active, name, ...props }) {
 	);
 }
 
-function Device({ id, icon, roomId, name, state = 'off' }) {
+function Device({ id, icon, roomId, name }) {
 	const dispatch = useDispatch();
+	const { api } = useNotificationContext();
 
-	const active = React.useMemo(() => state === 'on', [state]);
+	const { data } = useGetRouteData({
+		id,
+		onError(error) {
+			api.error({
+				message: 'Error at switch ' + id,
+				description: error.message,
+			});
+		},
+	});
+
+	const active = React.useMemo(() => data?.value === 1, [data]);
+
+	console.log(id, data?.value);
+
+	// const action = useSetRouteData({ id });
+
+	// console.log('DATA :>> ', data);
+
+	// console.log('ACTION :>> ', action);
 
 	const handleToggle = React.useCallback(
 		(checked) => {
@@ -55,7 +77,7 @@ function Device({ id, icon, roomId, name, state = 'off' }) {
 				<Switch
 					className={active ? 'active-device' : undefined}
 					onChange={handleToggle}
-					checked={state === 'on'}
+					checked={active}
 				/>
 			</div>
 			<div className="flex justify-center my-3 w-full">
