@@ -7,18 +7,16 @@ function useSetRouteData({ id, name, onError, onSuccess }) {
 	const [error, setError] = React.useState(null);
 	const [loading, setLoading] = React.useState(false);
 
-	const handleLoad = React.useCallback(
-		({ error, data }) => {
-			if (data) setData(data);
-			if (error) setError(error);
+	const handleLoad = React.useCallback(({ error, data }) => {
+		if (data !== undefined) setData(data);
+		if (error !== undefined) setError(error);
 
-			if (loading) setLoading(false);
-		},
-		[loading]
-	);
+		setLoading(false);
+	}, []);
 
 	const mutate = React.useCallback(
 		({ value }) => {
+			setLoading(true);
 			setRouteData({
 				route: id,
 				value,

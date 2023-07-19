@@ -12,7 +12,7 @@ function useGetRouteData({ id, onError }) {
 			if (newData !== undefined && newData !== data) setData(newData);
 			if (newError !== undefined && newError !== error) setError(newError);
 
-			if (loading) setLoading(false);
+			setLoading(false);
 		},
 		[data, error, loading]
 	);
