@@ -11,9 +11,7 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {
 		login(state, { payload }) {
-			const newData = state.data
-				? { ...state.data, ...payload.data }
-				: payload.data;
+			const newData = state.data ? { ...state.data, ...payload } : payload;
 			state.data = newData;
 			state.isAuthenticated = true;
 			state.isLoading = false;
@@ -24,9 +22,7 @@ const authSlice = createSlice({
 			state.isLoading = false;
 		},
 		setData(state, { payload }) {
-			const newData = state.data
-				? { ...state.data, ...payload.data }
-				: payload.data;
+			const newData = state.data ? { ...state.data, ...payload } : payload;
 			state.data = newData;
 			state.isLoading = false;
 		},
