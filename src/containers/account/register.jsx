@@ -1,41 +1,41 @@
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Alert, Button, Checkbox, Input } from 'antd';
-import { Form, Link, useActionData } from 'react-router-dom';
+import { Alert, Button, Input } from 'antd';
+import React from 'react';
 
-import routes from '../../config/routes';
+import { emailPasswordSignUp } from '../../firebase/auth';
 
 function Register() {
-	const action = useActionData();
+	const formRef = React.useRef(null);
+	const [error, setError] = React.useState(null);
 
 	return (
 		<>
 			<h2 className="font-semibold my-3 text-center text-lg text-secondary-500 md:text-xl">
 				Sign Up
 			</h2>
-			{action?.error && (
+			{error && (
 				<div>
-					<Alert message={action.error.message} showIcon type="error" />
+					<Alert message={error} showIcon type="error" />
 				</div>
 			)}
-			<Form method="post" action={routes.REGISTER_PAGE}>
-				<div className="my-5">
-					<label
-						className="block font-medium my-1 text-xs text-secondary-400"
-						htmlFor="full_name"
-					>
-						Full name
-					</label>
-					<Input
-						allowClear
-						className="border-secondary-500 rounded-3xl"
-						id="full_name"
-						name="full_name"
-						placeholder="John Doe"
-						size="large"
-						// status="error"
-						type="text"
-					/>
-				</div>
+			<form
+				ref={formRef}
+				onSubmit={(e) => {
+					e.preventDefault();
+					if (formRef.current) {
+						emailPasswordSignUp({
+							email: formRef.current.email.value,
+							password: formRef.current.password.value,
+						})
+							.then(() => {
+								window.alert('Account created successfully!');
+							})
+							.catch((error) => {
+								setError(error.message);
+							});
+					}
+				}}
+			>
 				<div className="my-5">
 					<label
 						className="block font-medium my-1 text-xs text-secondary-400"
@@ -76,19 +76,6 @@ function Register() {
 						// type="password"
 					/>
 				</div>
-				<div className="text-right">
-					<Checkbox name="accept_terms">
-						I agree to the{' '}
-						<Link className="text-primary-500" to="#">
-							terms and conditions,
-						</Link>{' '}
-						as well as the{' '}
-						<Link className="text-primary-500" to="#">
-							privacy policy
-						</Link>{' '}
-						of this service.
-					</Checkbox>
-				</div>
 				<div className="my-5">
 					<Button
 						block
@@ -101,15 +88,7 @@ function Register() {
 						<span className="px-4 text-sm">Sign Up</span>
 					</Button>
 				</div>
-			</Form>
-			<p className="font-medium my-5 text-center text-secondary-500 text-sm">
-				Already have an account?{' '}
-				<Link to={routes.LOGIN_PAGE}>
-					<Button type="link">
-						<span>Log In</span>
-					</Button>
-				</Link>
-			</p>
+			</form>
 		</>
 	);
 }
