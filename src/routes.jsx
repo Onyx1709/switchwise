@@ -15,8 +15,8 @@ import { Authenticated, NotAuthenticated } from './layout/protections';
 
 // Auth
 import Home from './pages';
-import Authentication from './pages/account/authentication';
 import ForgotPassword from './pages/account/forgot-password';
+import ForgotPasswordSuccess from './pages/account/forgot-password-success';
 import Login from './pages/account/login';
 
 // Dashboard
@@ -60,20 +60,13 @@ const routes = [
 						element: <ForgotPassword />,
 					},
 					{
+						path: pageRoutes.FORGOT_PASSWORD_SUCCESS_PAGE,
+						element: <ForgotPasswordSuccess />,
+					},
+					{
 						action: login,
 						path: pageRoutes.LOGIN_PAGE,
 						element: <Login />,
-					},
-				],
-			},
-			{
-				element: <Authenticated />,
-				path: pageRoutes.AUTHENTICATION_PAGE,
-				children: [
-					{
-						index: true,
-						path: '',
-						element: <Authentication />,
 					},
 				],
 			},

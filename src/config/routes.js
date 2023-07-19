@@ -4,8 +4,8 @@ export const HOME_PAGE = '/';
 export const AUTH_BASE_PAGE = '/account';
 export const AUTHENTICATION_PAGE = AUTH_BASE_PAGE + '/authentication';
 export const FORGOT_PASSWORD_PAGE = AUTH_BASE_PAGE + '/forgot-password';
+export const FORGOT_PASSWORD_SUCCESS_PAGE = FORGOT_PASSWORD_PAGE + '/success';
 export const LOGIN_PAGE = AUTH_BASE_PAGE + '/login';
-export const REGISTER_PAGE = AUTH_BASE_PAGE + '/register';
 
 // Dashboard
 export const DASHBOARD_PAGE = '/dashboard';
@@ -17,9 +17,9 @@ const routes = {
 	AUTH_BASE_PAGE,
 	AUTHENTICATION_PAGE,
 	FORGOT_PASSWORD_PAGE,
+	FORGOT_PASSWORD_SUCCESS_PAGE,
 	HOME_PAGE,
 	LOGIN_PAGE,
-	REGISTER_PAGE,
 
 	// Dashboard
 	DASHBOARD_PAGE,

@@ -1,3 +1,6 @@
+import { redirect } from 'react-router-dom';
+
+import routes from '../../config/routes';
 import { resetPassword } from '../../firebase/auth';
 
 export default async function forgotPassword({ request }) {
@@ -20,11 +23,8 @@ export default async function forgotPassword({ request }) {
 			// check for response error
 			if (response.error) throw new Error(response.error.message);
 
-			return {
-				data: {
-					message: 'Password email sent!',
-				},
-			};
+			// redirect to the password
+			return redirect(routes.FORGOT_PASSWORD_SUCCESS_PAGE);
 		}
 
 		return {
