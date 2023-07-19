@@ -126,7 +126,7 @@ export async function emailPasswordLogin({ email, password }) {
 // Send password reset link
 export async function resetPassword({ email }) {
 	try {
-		await sendPasswordResetEmail(email);
+		await sendPasswordResetEmail(auth, email);
 		return {
 			data: {
 				message:
