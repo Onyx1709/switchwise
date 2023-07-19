@@ -29,8 +29,7 @@ export async function setRouteData({ route, onSuccess, onError, value }) {
 		// route === 'L1' || 'L2' and so on...
 
 		// get reference to data
-		// const reference = ref(db, 'data/' + route);
-		const reference = ref(db, route);
+		const reference = ref(db, '/' + route);
 
 		// set data on reference
 		await set(reference, value);
