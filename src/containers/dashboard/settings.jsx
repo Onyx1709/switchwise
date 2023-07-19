@@ -24,6 +24,7 @@ function Settings() {
 
 	React.useEffect(() => {
 		if (action?.error) setError(action.error.message);
+		else setError(null);
 	}, [action]);
 
 	return (

@@ -29,7 +29,10 @@ export default async function passwordChange({ request }) {
 			if (response.error) throw new Error(response.error.message);
 
 			return {
-				data: response.data,
+				data: {
+					for: 'password',
+					message: 'Password was updated successfully!',
+				},
 			};
 		}
 
@@ -50,6 +53,8 @@ export default async function passwordChange({ request }) {
 
 			return {
 				data: {
+					...data,
+					for: 'profile',
 					message: 'Profile was updated successfully!',
 				},
 			};

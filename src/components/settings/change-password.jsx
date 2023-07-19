@@ -5,6 +5,7 @@ import React from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
+import { useNotificationContext } from '../../store/contexts';
 
 function ChangePassword() {
 	const [form, setForm] = React.useState({
@@ -14,6 +15,7 @@ function ChangePassword() {
 
 	const action = useActionData();
 	const { state } = useNavigation();
+	const { api } = useNotificationContext();
 
 	const loading = React.useMemo(
 		() => state === 'submitting' || state === 'loading',
@@ -21,13 +23,17 @@ function ChangePassword() {
 	);
 
 	React.useEffect(() => {
-		if (action?.data?.message) {
+		if (action?.data?.message && action?.data.for === 'password') {
 			setForm({
 				password1: '',
 				password2: '',
 			});
+			api.success({
+				message: 'Password updated',
+				description: 'Password was updated successfully!',
+			});
 		}
-	}, [action]);
+	}, [action, api]);
 
 	return (
 		<Form className="w-full" method="post" action={routes.SETTINGS_PAGE}>

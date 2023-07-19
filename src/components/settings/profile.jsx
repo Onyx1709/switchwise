@@ -27,10 +27,10 @@ function Profile() {
 	);
 
 	React.useEffect(() => {
-		if (action?.data) {
+		if (action?.data?.message && action?.data.for === 'profile') {
 			dispatch(
 				setData({
-					displayName: form.full_name,
+					displayName: action.data.displayName,
 				})
 			);
 			api.success({
@@ -38,7 +38,7 @@ function Profile() {
 				description: 'Profile was updated successfully',
 			});
 		}
-	}, [action, api, dispatch, form]);
+	}, [action, api, dispatch]);
 
 	return (
 		<Form method="put" action={routes.SETTINGS_PAGE}>
