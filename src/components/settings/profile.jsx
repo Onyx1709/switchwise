@@ -30,7 +30,9 @@ function Profile() {
 		if (action?.data?.message && action?.data.for === 'profile') {
 			dispatch(
 				setData({
-					displayName: action.data.displayName,
+					data: {
+						displayName: action.data.displayName,
+					},
 				})
 			);
 			api.success({

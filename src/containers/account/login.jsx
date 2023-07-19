@@ -4,6 +4,7 @@ import React from 'react';
 import { Form, Link, useActionData, useNavigation } from 'react-router-dom';
 
 import routes from '../../config/routes';
+import { useNotificationContext } from '../../store/contexts';
 
 function Login() {
 	const action = useActionData();
@@ -13,6 +14,15 @@ function Login() {
 		() => state === 'submitting' || state === 'loading',
 		[state]
 	);
+
+	const { api } = useNotificationContext()
+
+	React.useEffect(() => {
+		if (action?.data) api.success({
+			message: 'Signed In',
+			description: 'Your authentication credentials were accepted and you are now signed in.'
+		});
+	}, [action, api])
 
 	return (
 		<>

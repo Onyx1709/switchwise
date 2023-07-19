@@ -13,11 +13,13 @@ function CheckAuth({ children }) {
 			if (user)
 				dispatch(
 					login({
-						displayName: user.displayName,
-						email: user.email,
-						id: user.uid,
-						image: user.photoURL,
-						phone: user.phoneNumber,
+						data: {
+							displayName: user.displayName,
+							email: user.email,
+							id: user.uid,
+							image: user.photoURL,
+							phone: user.phoneNumber,
+						},
 					})
 				);
 			else dispatch(logout());
