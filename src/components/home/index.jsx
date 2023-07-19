@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Spin } from 'antd';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ export function NavButtons() {
 	const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
 	const { logout: handleLogout, loading: logoutLoading } = useLogout();
 
-	if (isLoading) return <>Loading...</>;
+	if (isLoading) return <Spin spinning={isLoading} />;
 
 	if (!isAuthenticated)
 		return (
@@ -62,7 +62,7 @@ export function HomeButtons() {
 	const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
 	const { logout: handleLogout, loading: logoutLoading } = useLogout();
 
-	if (isLoading) return <>Loading...</>;
+	if (isLoading) return <Spin spinning={isLoading} />;
 
 	if (!isAuthenticated)
 		return (

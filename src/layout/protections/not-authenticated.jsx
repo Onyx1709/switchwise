@@ -1,3 +1,4 @@
+import { Spin } from 'antd';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -64,7 +65,12 @@ function NotAuthenticated() {
 		checkRoute();
 	}, [state, searchParams]);
 
-	if (isLoading) return <>Loading...</>;
+	if (isLoading)
+		return (
+			<div className="flex h-full items-center justify-center min-h-[50vh] w-full">
+				<Spin spinning={isLoading} size="large" />
+			</div>
+		);
 
 	if (!isAuthenticated) return <Outlet />;
 
