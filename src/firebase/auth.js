@@ -1,9 +1,11 @@
 import {
 	createUserWithEmailAndPassword,
-	updatePassword,
-	updateProfile,
+	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
 	signOut,
+	updateEmail,
+	updatePassword,
+	updateProfile,
 } from 'firebase/auth';
 
 import { auth } from '.';
@@ -30,13 +32,20 @@ export async function getProfile() {
 	}
 }
 
-// update user profile info
-export async function updateProfileInfo(payload) {
+// update user profile info and email as well
+export async function updateProfileInfo({ email, ...payload }) {
 	// payload = { displayName: '', photoURL: '' }
 	try {
 		if (auth.currentUser) {
 			const data = await updateProfile(auth.currentUser, payload);
-			return { data };
+			updateEmail(auth.currentUser, email);
+
+			return {
+				data: {
+					email,
+					...data,
+				},
+			};
 		} else {
 			return {
 				error: {
@@ -105,6 +114,23 @@ export async function emailPasswordLogin({ email, password }) {
 		return {
 			error: {
 				message: 'Unable to login with provided credentials',
+			},
+		};
+	} catch (error) {
+		return {
+			error: handleError(error),
+		};
+	}
+}
+
+// Send password reset link
+export async function resetPassword({ email }) {
+	try {
+		await sendPasswordResetEmail(email);
+		return {
+			data: {
+				message:
+					'A password reset email was sent to your email address. Follow the instructions ot continue.',
 			},
 		};
 	} catch (error) {

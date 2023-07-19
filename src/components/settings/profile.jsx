@@ -19,6 +19,7 @@ function Profile() {
 
 	const [form, setForm] = React.useState(() => ({
 		full_name: data?.displayName || '',
+		email: data?.email || '',
 	}));
 
 	const loading = React.useMemo(
@@ -32,6 +33,7 @@ function Profile() {
 				setData({
 					data: {
 						displayName: action.data.displayName,
+						email: action.data.email,
 					},
 				})
 			);
@@ -77,6 +79,33 @@ function Profile() {
 						}));
 					}}
 					value={form.full_name}
+				/>
+			</div>
+
+			<div className="my-5">
+				<label
+					className="block font-medium my-1 text-xs text-secondary-400"
+					htmlFor="email"
+				>
+					Email address
+				</label>
+				<Input
+					allowClear
+					className="border-secondary-500 rounded-3xl"
+					disabled={loading}
+					id="email"
+					name="email"
+					placeholder="John Doe"
+					size="large"
+					// status="error"
+					type="email"
+					onChange={({ target: { value } }) => {
+						setForm((prevState) => ({
+							...prevState,
+							email: value,
+						}));
+					}}
+					value={form.email}
 				/>
 			</div>
 

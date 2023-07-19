@@ -40,10 +40,12 @@ export default async function passwordChange({ request }) {
 			// Get the data from the form
 			const data = {
 				displayName: form.get('full_name'),
+				email: form.get('email'),
 			};
 
 			// Verify the email and displayName
-			if (!data.displayName) throw new Error('Full name is required');
+			if (!data.displayName) throw new Error('Full name is required!');
+			if (!data.email) throw new Error('Email address is required!');
 
 			// Update profile info
 			const response = await updateProfileInfo(data);
