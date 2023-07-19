@@ -21,13 +21,6 @@ export function NavButtons() {
 						</Button>
 					</Link>
 				</div>
-				<div>
-					<Link className="w-full" to={routes.REGISTER_PAGE}>
-						<Button block shape="round" size="large" type="primary">
-							<span className="inline-block px-4 text-sm">Sign Up</span>
-						</Button>
-					</Link>
-				</div>
 			</div>
 		);
 
@@ -47,7 +40,7 @@ export function NavButtons() {
 				</Link>
 			</div>
 			<div>
-				<span className="w-full" to={routes.REGISTER_PAGE}>
+				<span className="w-full">
 					<Button
 						block
 						onClick={handleLogout}
@@ -74,18 +67,8 @@ export function HomeButtons() {
 	if (!isAuthenticated)
 		return (
 			<div className="flex justify-center my-3 md:justify-start">
-				<Link className="hidden md:inline" to={routes.REGISTER_PAGE}>
-					<Button size="large" shape="round" type="primary">
-						<span className="px-4 text-sm">Get Started</span>
-					</Button>
-				</Link>
-				<Link className="mx-2 md:hidden" to={routes.REGISTER_PAGE}>
-					<Button size="large" shape="round" type="primary">
-						<span className="px-4 text-sm">Sign Up</span>
-					</Button>
-				</Link>
 				<Link className="inline-block mx-2 md:hidden" to={routes.LOGIN_PAGE}>
-					<Button size="large" shape="round" type="default">
+					<Button size="large" shape="round" type="primary">
 						<span className="px-4 text-sm">Login</span>
 					</Button>
 				</Link>
@@ -104,10 +87,11 @@ export function HomeButtons() {
 					<span className="px-4 text-sm">Dashboard</span>
 				</Button>
 			</Link>
-			<span className="inline-block mx-2 md:hidden" onClick={handleLogout}>
+			<span className="inline-block mx-2 md:hidden">
 				<Button
 					disabled={logoutLoading}
 					loading={logoutLoading}
+					onClick={handleLogout}
 					size="large"
 					shape="round"
 					type="default"

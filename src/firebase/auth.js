@@ -51,6 +51,7 @@ export async function updateProfileInfo(payload) {
 	}
 }
 
+// TODO: Remove this function. Not being used.
 // register use with email and password
 export async function emailPasswordSignUp({ email, password }) {
 	try {

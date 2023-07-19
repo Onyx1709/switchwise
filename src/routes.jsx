@@ -18,7 +18,6 @@ import Home from './pages';
 import Authentication from './pages/account/authentication';
 import ForgotPassword from './pages/account/forgot-password';
 import Login from './pages/account/login';
-import Register from './pages/account/register';
 
 // Dashboard
 import Dashboard from './pages/dashboard';
@@ -28,7 +27,6 @@ import Settings from './pages/dashboard/settings';
 // APIs
 import login from './api/account/login';
 import updateUserInfo from './api/account/update-user-info';
-import register from './api/account/register';
 
 const routes = [
 	{
@@ -63,11 +61,6 @@ const routes = [
 						action: login,
 						path: pageRoutes.LOGIN_PAGE,
 						element: <Login />,
-					},
-					{
-						action: register,
-						path: pageRoutes.REGISTER_PAGE,
-						element: <Register />,
 					},
 				],
 			},
