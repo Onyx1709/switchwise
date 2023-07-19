@@ -1,4 +1,4 @@
-import { CameraOutlined, UserOutlined } from '@ant-design/icons';
+// import { CameraOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, Button, Input } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,28 +17,37 @@ function Profile() {
 		full_name: data?.displayName || '',
 	}));
 
+	const [error, setError] = React.useState(null);
+
 	React.useEffect(() => {
 		if (action?.data) {
 			dispatch(setData(action.data));
 		}
+		if (action?.error) setError(action.error.message);
 	}, [action, dispatch]);
 
 	return (
 		<>
-			{action?.error && (
+			{error && (
 				<div className="my-3">
-					<Alert message={action.error.message} showIcon type="error" />
+					<Alert
+						closable
+						message={error}
+						onClose={() => setError(null)}
+						showIcon
+						type="error"
+					/>
 				</div>
 			)}
 			<Form method="post" action={routes.SETTINGS_PAGE}>
-				<div className="border-2 border-solid border-secondary-500 cursor-pointer duration-500 flex h-14 items-center justify-center mx-auto my-4 relative rounded-full w-14 active:relative active:top-[2px] hover:scale-105">
+				{/* <div className="border-2 border-solid border-secondary-500 cursor-pointer duration-500 flex h-14 items-center justify-center mx-auto my-4 relative rounded-full w-14 active:relative active:top-[2px] hover:scale-105">
 					<span className="text-2xl text-secondary-500">
 						<UserOutlined />
 					</span>
 					<span className="absolute bg-white bottom-0 flex h-5 items-center justify-center right-0 rounded-full text-xs text-secondary-500 w-5">
 						<CameraOutlined />
 					</span>
-				</div>
+				</div> */}
 
 				<div className="my-5">
 					<label

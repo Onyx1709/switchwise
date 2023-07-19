@@ -10,6 +10,7 @@ function ChangePassword() {
 		password1: '',
 		password2: '',
 	});
+	const [error, setError] = React.useState(null);
 
 	const action = useActionData();
 
@@ -20,13 +21,20 @@ function ChangePassword() {
 				password2: '',
 			});
 		}
+		if (action?.error) setError(action.error.message);
 	}, [action]);
 
 	return (
 		<>
-			{action?.error && (
+			{error && (
 				<div className="my-3">
-					<Alert message={action.error.message} showIcon type="error" />
+					<Alert
+						closable
+						message={error}
+						onClose={() => setError(null)}
+						showIcon
+						type="error"
+					/>
 				</div>
 			)}
 			<Form className="w-full" method="post" action={routes.SETTINGS_PAGE}>
