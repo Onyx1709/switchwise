@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Switch } from 'antd';
+import { Skeleton, Switch, Spin } from 'antd';
 import React from 'react';
 
 import { Bars, Bulb, FanIcon, GateIcon, SocketIcon, WaterIcon } from './icons';
@@ -36,7 +36,7 @@ function Icon({ active, name, ...props }) {
 function Device({ id, icon, name }) {
 	const { api } = useNotificationContext();
 
-	const { data } = useGetRouteData({
+	const { data, loading: dataLoading } = useGetRouteData({
 		id,
 		onError(error) {
 			api.error({
@@ -46,7 +46,7 @@ function Device({ id, icon, name }) {
 		},
 	});
 
-	const { mutate } = useSetRouteData({
+	const { mutate: toggle, loading: toggleLoading } = useSetRouteData({
 		id,
 		name,
 		onError(error) {
@@ -61,31 +61,35 @@ function Device({ id, icon, name }) {
 
 	const handleToggle = React.useCallback(
 		(checked) => {
-			mutate({ value: checked ? 1 : 0 });
+			toggle({ value: checked ? 1 : 0 });
 		},
-		[mutate]
+		[toggle]
 	);
 
+	if (dataLoading) return <Skeleton active={dataLoading} />;
+
 	return (
-		<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
-			<div className="flex justify-end mb-1 w-full">
-				<Switch
-					className={active ? 'active-device' : undefined}
-					onChange={handleToggle}
-					checked={active}
-				/>
+		<Spin spinning={toggleLoading} delay={500}>
+			<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
+				<div className="flex justify-end mb-1 w-full">
+					<Switch
+						className={active ? 'active-device' : undefined}
+						onChange={handleToggle}
+						checked={active}
+					/>
+				</div>
+				<div className="flex justify-center my-3 w-full">
+					<Icon active={active} name={icon} />
+				</div>
+				<h5
+					className={`${
+						active ? 'text-gray-100' : 'text-primary-500'
+					} capitalize mt-1 text-sm w-full`}
+				>
+					{name}
+				</h5>
 			</div>
-			<div className="flex justify-center my-3 w-full">
-				<Icon active={active} name={icon} />
-			</div>
-			<h5
-				className={`${
-					active ? 'text-gray-100' : 'text-primary-500'
-				} capitalize mt-1 text-sm w-full`}
-			>
-				{name}
-			</h5>
-		</div>
+		</Spin>
 	);
 }
 
