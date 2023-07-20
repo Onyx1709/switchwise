@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Switch } from 'antd';
+import { Skeleton, Switch, Spin } from 'antd';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import { Bars, Bulb, FanIcon, GateIcon, SocketIcon, WaterIcon } from './icons';
-import { toggleDeviceState } from '../../store/features/rooms';
+import useGetRouteData from '../../hooks/useGetRouteData';
+import useSetRouteData from '../../hooks/useSetRouteData';
+import { useNotificationContext } from '../../store/contexts';
 
 const classes =
 	'border-2 border-solid border-primary-500 duration-300 flex flex-col h-full items-center justify-between px-4 py-3 rounded-md shadow-lg transition-all transform';
@@ -32,43 +33,63 @@ function Icon({ active, name, ...props }) {
 	);
 }
 
-function Device({ id, icon, roomId, name, state = 'off' }) {
-	const dispatch = useDispatch();
+function Device({ id, icon, name }) {
+	const { api } = useNotificationContext();
 
-	const active = React.useMemo(() => state === 'on', [state]);
+	const { data, loading: dataLoading } = useGetRouteData({
+		id,
+		onError(error) {
+			api.error({
+				message: `Error at ${name} switch!`,
+				description: error.message,
+			});
+		},
+	});
+
+	const { mutate: toggle, loading: toggleLoading } = useSetRouteData({
+		id,
+		name,
+		onError(error) {
+			api.error({
+				message: `Toggle error at ${name} switch`,
+				description: error.message,
+			});
+		},
+	});
+
+	const active = React.useMemo(() => data === 1, [data]);
 
 	const handleToggle = React.useCallback(
 		(checked) => {
-			const payload = {
-				id,
-				roomId,
-				state: checked ? 'on' : 'off',
-			};
-			dispatch(toggleDeviceState(payload));
+			toggle({ value: checked ? 1 : 0 });
 		},
-		[dispatch, id, roomId]
+		[toggle]
 	);
 
+	if (dataLoading) return <Skeleton active={dataLoading} />;
+
 	return (
-		<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
-			<div className="flex justify-end mb-1 w-full">
-				<Switch
-					className={active ? 'active-device' : undefined}
-					onChange={handleToggle}
-					checked={state === 'on'}
-				/>
+		<Spin spinning={toggleLoading} delay={500}>
+			<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
+				<div className="flex justify-end mb-1 w-full">
+					<Switch
+						className={active ? 'active-device' : undefined}
+						onChange={handleToggle}
+						checked={active}
+					/>
+				</div>
+				<div className="flex justify-center my-3 w-full">
+					<Icon active={active} name={icon} />
+				</div>
+				<h5
+					className={`${
+						active ? 'text-gray-100' : 'text-primary-500'
+					} capitalize mt-1 text-sm w-full`}
+				>
+					{name}
+				</h5>
 			</div>
-			<div className="flex justify-center my-3 w-full">
-				<Icon active={active} name={icon} />
-			</div>
-			<h5
-				className={`${
-					active ? 'text-gray-100' : 'text-primary-500'
-				} capitalize mt-1 text-sm w-full`}
-			>
-				{name}
-			</h5>
-		</div>
+		</Spin>
 	);
 }
 

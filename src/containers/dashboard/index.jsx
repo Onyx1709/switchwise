@@ -1,11 +1,9 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { ROOM_PAGE } from '../../config/routes';
+import rooms from '../../firebase/rooms';
 
 function Dashboard() {
-	const rooms = useSelector((state) => state.rooms.data);
-
 	return (
 		<div className="w-full">
 			<div className="h-[225px] mb-3 w-full sm:h-[250px] md:h-[275px] lg:h-[300px]">
@@ -25,7 +23,7 @@ function Dashboard() {
 					Pick a zone you wish to control.
 				</h4>
 				<div className="gap-8 grid grid-cols-1 my-3 sm:grid-cols-2 lg:grid-cols-3">
-					{rooms.map((room, index) => (
+					{rooms.data.map((room, index) => (
 						<Link
 							className="bg-white cursor-pointer duration-500 no-underline rounded-md shadow-lg transform hover:scale-105"
 							to={ROOM_PAGE(room.id)}

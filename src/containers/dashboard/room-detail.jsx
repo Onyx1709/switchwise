@@ -1,15 +1,13 @@
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Device from '../../components/room/device';
+import rooms from '../../firebase/rooms';
 import NotFound from '../../pages/not-found';
 
 function RoomDetail() {
 	const { id } = useParams();
 
-	const room = useSelector((state) =>
-		state.rooms.data.find((room) => room.id === id)
-	);
+	const room = rooms.data.find((room) => room.id === id);
 
 	if (!room) return <NotFound />;
 
