@@ -69,7 +69,7 @@ function Device({ id, icon, name }) {
 	// if (dataLoading) return <Skeleton active={dataLoading} />;
 
 	return (
-		<Spin spinning={toggleLoading || dataLoading} delay={500}>
+		<Spin spinning={toggleLoading} delay={500}>
 			<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
 				<div className="flex justify-end mb-1 w-full">
 					<Switch
