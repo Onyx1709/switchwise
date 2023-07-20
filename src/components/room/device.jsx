@@ -69,27 +69,27 @@ function Device({ id, icon, name }) {
 	if (dataLoading) return <Skeleton active={dataLoading} />;
 
 	return (
-		<Spin spinning={toggleLoading} delay={500}>
-			<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
-				<div className="flex justify-end mb-1 w-full">
+		<div className={`${active ? activeClasses : inactiveClasses} ${classes}`}>
+			<div className="flex justify-end mb-1 w-full">
+				<Spin spinning={toggleLoading} size="small" delay={500}>
 					<Switch
 						className={active ? 'active-device' : undefined}
 						onChange={handleToggle}
 						checked={active}
 					/>
-				</div>
-				<div className="flex justify-center my-3 w-full">
-					<Icon active={active} name={icon} />
-				</div>
-				<h5
-					className={`${
-						active ? 'text-gray-100' : 'text-primary-500'
-					} capitalize mt-1 text-sm w-full`}
-				>
-					{name}
-				</h5>
+				</Spin>
 			</div>
-		</Spin>
+			<div className="flex justify-center my-3 w-full">
+				<Icon active={active} name={icon} />
+			</div>
+			<h5
+				className={`${
+					active ? 'text-gray-100' : 'text-primary-500'
+				} capitalize mt-1 text-sm w-full`}
+			>
+				{name}
+			</h5>
+		</div>
 	);
 }
 
