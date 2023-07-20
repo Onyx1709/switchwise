@@ -66,7 +66,7 @@ function Device({ id, icon, name }) {
 		[toggle]
 	);
 
-	// if (dataLoading) return <Skeleton active={dataLoading} />;
+	if (dataLoading) return <Skeleton active={dataLoading} />;
 
 	return (
 		<Spin spinning={toggleLoading} delay={500}>
