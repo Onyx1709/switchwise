@@ -9,7 +9,7 @@ export function getRouteData({ route, onError, onSuccess }) {
 		// route === 'L1' || 'L2' and so on...
 
 		// get reference to data
-		const reference = ref(db, '/' + route);
+		const reference = ref(db, '/room1/' + route);
 
 		onValue(reference, (snapshot) => {
 			if (snapshot.exists()) {
@@ -29,7 +29,7 @@ export async function setRouteData({ route, onSuccess, onError, value }) {
 		// route === 'L1' || 'L2' and so on...
 
 		// get reference to data
-		const reference = ref(db, '/' + route);
+		const reference = ref(db, '/room1/' + route);
 
 		// set data on reference
 		await set(reference, value);
