@@ -57,11 +57,11 @@ function Device({ id, icon, name }) {
 		},
 	});
 
-	const active = React.useMemo(() => data === 1, [data]);
+	const active = React.useMemo(() => data === "1", [data]);
 
 	const handleToggle = React.useCallback(
 		(checked) => {
-			toggle({ value: checked ? 1 : 0 });
+			toggle({ value: checked ? "1" : "0" });
 		},
 		[toggle]
 	);
