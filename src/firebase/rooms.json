@@ -12,11 +12,6 @@
 					"name": "lights"
 				},
 				{
-					"id": "L2",
-					"icon": "fan",
-					"name": "fan"
-				},
-				{
 					"id": "L3",
 					"icon": "socket",
 					"name": "socket"
