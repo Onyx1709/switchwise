@@ -60,11 +60,6 @@
 			"name": "Others",
 			"devices": [
 				{
-					"id": "OT1",
-					"icon": "bulb",
-					"name": "security lights"
-				},
-				{
 					"id": "OT2",
 					"icon": "water",
 					"name": "pumping machine"
